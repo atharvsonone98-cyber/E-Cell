@@ -1,0 +1,6 @@
+{
+  "name": "E-Cell SSGMCE",
+  "description": "The official Entrepreneurship & Innovation Cell website of Shri Sant Gajanan Maharaj College of Engineering (SSGMCE), Shegaon. Empowering student innovators with startup incubation, pitch competitions, mentor networks, verified certificates, and AI venture tools.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
