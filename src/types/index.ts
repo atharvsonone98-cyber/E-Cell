@@ -386,3 +386,132 @@ export interface SeniorConsultedItem {
   postHeld: string;
   avatar?: string;
 }
+
+export interface GalleryItem {
+  id: string;
+  title: string;
+  eventName: string;
+  date: string;
+  category: 'Events' | 'Workshops' | 'Competitions' | 'Guest Sessions' | 'Team & Campus' | 'Celebrations';
+  imageUrl: string;
+  description: string;
+  location?: string;
+  featured?: boolean;
+}
+
+export interface AchievementItem {
+  id: string;
+  year: string;
+  title: string;
+  category: 'Recognition' | 'Award' | 'Competition Win' | 'Ecosystem' | 'Student Impact';
+  description: string;
+  awardName: string;
+  awardedBy: string;
+  certificateUrl?: string;
+  badgeIcon: string;
+  stats?: string;
+  featured?: boolean;
+}
+
+export interface InitiativeItem {
+  id: string;
+  title: string;
+  iconName: string;
+  category: string;
+  shortDescription: string;
+  longDescription: string;
+  outcomes: string[];
+  targetAudience: string;
+  frequency: string;
+  highlights: string[];
+}
+
+export interface AnnouncementItem {
+  id: string;
+  title: string;
+  category: 'New Event' | 'Registration Open' | 'Competition' | 'Results' | 'Team Announcement' | 'Important Notice';
+  description: string;
+  date: string;
+  isImportant: boolean;
+  link?: string;
+  linkText?: string;
+  badgeText?: string;
+}
+
+export interface SpeakerItem {
+  id: string;
+  name: string;
+  role: string;
+  company: string;
+  avatar: string;
+  topic: string;
+  eventAttended: string;
+  year: string;
+  bio: string;
+  linkedin?: string;
+  type: 'Entrepreneur' | 'Industry Leader' | 'Alumni' | 'Founder' | 'Expert';
+}
+
+export interface PartnerItem {
+  id: string;
+  name: string;
+  category: 'Incubator' | 'Industry Partner' | 'Student Committee' | 'Ecosystem' | 'Alumni Venture';
+  logo: string;
+  website?: string;
+  description?: string;
+}
+
+export interface TestimonialItem {
+  id: string;
+  name: string;
+  role: string;
+  department: string;
+  year: string;
+  quote: string;
+  avatar: string;
+  eventAttended?: string;
+  type: 'Student' | 'Alumni' | 'Speaker' | 'Faculty';
+  rating?: number;
+}
+
+export interface JoinApplication {
+  id: string;
+  fullName: string;
+  email: string;
+  phone: string;
+  department: string;
+  year: string;
+  collegeId?: string;
+  domainInterest: string[];
+  whyJoin: string;
+  previousExperience?: string;
+  status: 'pending' | 'reviewed' | 'shortlisted' | 'accepted' | 'rejected';
+  submittedAt: string;
+}
+
+export interface ContactMessage {
+  id: string;
+  name: string;
+  email: string;
+  phone?: string;
+  subject: string;
+  message: string;
+  status: 'unread' | 'read' | 'replied';
+  createdAt: string;
+}
+
+export interface StoryItem {
+  id: string;
+  title: string;
+  category: 'Event Recap' | 'Team Story' | 'Member Spotlight' | 'Guest Session' | 'Behind The Scenes';
+  date: string;
+  readTime: string;
+  banner: string;
+  author: string;
+  authorRole: string;
+  authorAvatar: string;
+  excerpt: string;
+  content: string;
+  featured?: boolean;
+}
+

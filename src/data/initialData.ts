@@ -13,7 +13,17 @@ import {
   NotificationItem,
   CommitteeMember,
   WorkReportItem,
-  SeniorConsultedItem
+  SeniorConsultedItem,
+  GalleryItem,
+  AchievementItem,
+  InitiativeItem,
+  AnnouncementItem,
+  SpeakerItem,
+  PartnerItem,
+  TestimonialItem,
+  JoinApplication,
+  ContactMessage,
+  StoryItem
 } from '../types';
 
 export const INITIAL_USERS: UserProfile[] = [
@@ -1891,3 +1901,522 @@ export const INITIAL_WORK_REPORTS: WorkReportItem[] = [
     bannerImage: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&auto=format&fit=crop&q=80'
   }
 ];
+
+export const INITIAL_GALLERY: GalleryItem[] = [
+  {
+    id: 'gal-1',
+    title: 'E-Summit Flagship Inauguration & Keynote',
+    eventName: "E-Summit '26",
+    date: '2026-04-18',
+    category: 'Events',
+    imageUrl: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=1000&auto=format&fit=crop&q=80',
+    description: 'Lighting of the lamp and opening ceremony with college dignitaries, patron Dr. S. B. Somani, and visiting venture leaders.',
+    location: 'Main Auditorium, SSGMCE',
+    featured: true
+  },
+  {
+    id: 'gal-2',
+    title: 'Hands-on React Native & Mobile MVP Sprint',
+    eventName: 'App Development Workshop',
+    date: '2025-03-07',
+    category: 'Workshops',
+    imageUrl: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1000&auto=format&fit=crop&q=80',
+    description: '100+ students building cross-platform native applications simultaneously in the Central Computer Center.',
+    location: 'Lab 304, Computer Center',
+    featured: true
+  },
+  {
+    id: 'gal-3',
+    title: 'Genesis Ideathon Live Pitch Jury Battle',
+    eventName: "Genesis '26 Ideathon",
+    date: '2026-05-02',
+    category: 'Competitions',
+    imageUrl: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=1000&auto=format&fit=crop&q=80',
+    description: 'Top collegiate finalists pitching innovative hardware and agritech prototypes to the expert jury panel.',
+    location: 'Seminar Hall, SSGMCE',
+    featured: true
+  },
+  {
+    id: 'gal-4',
+    title: 'Pankaj Nirale Masterclass on Product-Market Fit',
+    eventName: 'PMF & MVP Masterclass',
+    date: '2025-02-14',
+    category: 'Guest Sessions',
+    imageUrl: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1000&auto=format&fit=crop&q=80',
+    description: 'Country Head Mr. Pankaj Nirale breaking down lean startup experiments for student founders.',
+    location: 'Hybrid Studio & Virtual Stream',
+    featured: false
+  },
+  {
+    id: 'gal-5',
+    title: 'Team Navonmesh Annual Strategy & Inductions',
+    eventName: 'E-Cell Annual Meet',
+    date: '2026-01-15',
+    category: 'Team & Campus',
+    imageUrl: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1000&auto=format&fit=crop&q=80',
+    description: 'Team Navonmesh 2026-27 council planning annual event timelines and wing initiatives.',
+    location: 'Incubation Center, SSGMCE',
+    featured: true
+  },
+  {
+    id: 'gal-6',
+    title: 'Roadies 2-Day Obstacle & Leadership Course',
+    eventName: 'Roadies 2025 Arena',
+    date: '2025-03-08',
+    category: 'Celebrations',
+    imageUrl: 'https://images.unsplash.com/photo-1517649763962-0c623266ddc0?w=1000&auto=format&fit=crop&q=80',
+    description: 'High-octane collegiate teamwork and stamina challenge testing leadership and resilience.',
+    location: 'SSGMCE Sports Complex',
+    featured: false
+  },
+  {
+    id: 'gal-7',
+    title: '24-Hour Non-Stop Srujan Hackathon Sprint',
+    eventName: 'Navonmesh Technical Carnival',
+    date: '2026-03-23',
+    category: 'Competitions',
+    imageUrl: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=1000&auto=format&fit=crop&q=80',
+    description: '500+ participants hacking overnight on real-world industry problem statements.',
+    location: 'Innovation Complex, SSGMCE',
+    featured: true
+  },
+  {
+    id: 'gal-8',
+    title: 'Zero to One Web Dev Deployment Workshop',
+    eventName: 'Pursuit 2026',
+    date: '2026-03-28',
+    category: 'Workshops',
+    imageUrl: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1000&auto=format&fit=crop&q=80',
+    description: 'Students launching their live cloud portfolios and web projects.',
+    location: 'IT Sandbox Lab',
+    featured: false
+  }
+];
+
+export const INITIAL_ACHIEVEMENTS: AchievementItem[] = [
+  {
+    id: 'ach-1',
+    year: '2026',
+    title: 'Ranked Top 10 Student E-Cells in Central India',
+    category: 'Recognition',
+    description: 'Recognized for highest student startup incubation throughput and high-impact national ideathons across Maharashtra.',
+    awardName: 'Excellence in Collegiate Entrepreneurship',
+    awardedBy: 'Western Region Innovation Consortium',
+    badgeIcon: '🏆',
+    stats: '500+ Active Builders',
+    featured: true
+  },
+  {
+    id: 'ach-2',
+    year: '2025',
+    title: '₹25,00,000+ Pre-Seed & Grant Facilitation',
+    category: 'Ecosystem',
+    description: 'Enabled campus student founders to secure DST NIDHI-PRAYAS, MSME incubation grants, and angel syndicate backing.',
+    awardName: 'Ecosystem Impact Milestone',
+    awardedBy: 'Innovation & Incubation Council, SSGMCE',
+    badgeIcon: '🚀',
+    stats: '₹25 Lakhs Grants',
+    featured: true
+  },
+  {
+    id: 'ach-3',
+    year: '2025',
+    title: '1st Place in National Smart City Hackathon',
+    category: 'Competition Win',
+    description: 'SSGMCE E-Cell incubated startup VoltSync secured 1st prize for IoT CAN-bus battery health monitoring algorithms.',
+    awardName: 'National Grand Winner',
+    awardedBy: 'Ministry of Electronics & IT (MeitY)',
+    badgeIcon: '🥇',
+    stats: '₹1,00,000 Cash Prize',
+    featured: true
+  },
+  {
+    id: 'ach-4',
+    year: '2024',
+    title: 'Best Technical & Leadership Committee Award',
+    category: 'Award',
+    description: 'Awarded by Shri Sant Gajanan Maharaj College of Engineering for organizing over 20+ seamless campus workshops.',
+    awardName: 'Best Campus Committee Honor',
+    awardedBy: 'SSGMCE Annual Institutional Awards',
+    badgeIcon: '⭐',
+    stats: '2,000+ Registrations',
+    featured: true
+  },
+  {
+    id: 'ach-5',
+    year: '2023',
+    title: 'Launch of Incubation Prototyping Sandbox',
+    category: 'Ecosystem',
+    description: 'Established dedicated hardware fabrication and cloud server clusters for student prototypes in collaboration with alumni.',
+    awardName: 'Campus Infrastructure Milestone',
+    awardedBy: 'SSGMCE Alumni Association',
+    badgeIcon: '💡',
+    stats: '24/7 Lab Access',
+    featured: false
+  }
+];
+
+export const INITIAL_INITIATIVES: InitiativeItem[] = [
+  {
+    id: 'init-1',
+    title: 'Entrepreneurship Workshops',
+    iconName: 'BookOpen',
+    category: 'Skill Building',
+    shortDescription: 'Hands-on weekend masterclasses taught by seasoned industry practitioners covering tech stacks, design systems, and product thinking.',
+    longDescription: 'Comprehensive deep dives designed to transform curious students into confident builders. Topics include full-stack web & mobile development, cloud DevOps, UI/UX prototyping, and AI workflow integration.',
+    outcomes: ['Deployable projects', 'Verified certificates', 'Direct mentor feedback'],
+    targetAudience: 'All engineering & management students',
+    frequency: 'Bi-weekly',
+    highlights: ['React Native & Web Dev', 'Cloud Computing credits', 'Hands-on coding sprints']
+  },
+  {
+    id: 'init-2',
+    title: 'Startup Awareness & Discovery',
+    iconName: 'Lightbulb',
+    category: 'Culture & Mindset',
+    shortDescription: 'Interactive orientation sessions breaking the myths of starting up, exploring problem validation, and fostering curiosity.',
+    longDescription: 'Demystifying the startup world for first and second year students. We explore case studies of Indian startup journeys, unit economics, customer discovery interviews, and how to spot real-world engineering problems.',
+    outcomes: ['Problem-Solution Fit frameworks', 'BMC drafting skills', 'Innovation mindset'],
+    targetAudience: '1st & 2nd Year Students',
+    frequency: 'Monthly',
+    highlights: ['Case study teardowns', 'Campus problem hunting', 'Alumni founder talks']
+  },
+  {
+    id: 'init-3',
+    title: 'National Pitch Competitions & Hackathons',
+    iconName: 'Trophy',
+    category: 'Competitive Sprints',
+    shortDescription: 'High-energy national competitions like Genesis Ideathon and Srujan 24h Hackathon with cash prize pools and jury evaluations.',
+    longDescription: 'The arena where raw ideas are pressure-tested. Teams work across tracks in AI, AgriTech, FinTech, and CleanTech to present workable solutions in front of angel investors and corporate executives.',
+    outcomes: ['Cash prize pools', 'Pre-incubation slots', 'Venture capital visibility'],
+    targetAudience: 'Student teams across India',
+    frequency: 'Quarterly',
+    highlights: ['₹1.5L+ Prize pools', '24-hour prototype build', 'Angel jury reviews']
+  },
+  {
+    id: 'init-4',
+    title: 'Industry Interaction & Guest Masterclasses',
+    iconName: 'Users',
+    category: 'Mentorship',
+    shortDescription: 'Fireside chats and intimate Q&A sessions with venture capitalists, serial founders, country heads, and alumni leaders.',
+    longDescription: 'Connecting students directly with leaders who have built at scale. Students learn about hiring, fundraising realities, market expansion, and avoiding critical early-stage startup pitfalls.',
+    outcomes: ['1-on-1 networking', 'Internship opportunities', 'Industry perspective'],
+    targetAudience: 'Aspiring founders & core builders',
+    frequency: 'Monthly',
+    highlights: ['YC alumni speakers', 'Corporate country heads', 'Interactive Q&A']
+  },
+  {
+    id: 'init-5',
+    title: 'Leadership & Committee Training',
+    iconName: 'Compass',
+    category: 'Leadership',
+    shortDescription: 'Rigorous student leadership programs cultivating project management, PR strategy, sponsorship negotiation, and event execution.',
+    longDescription: 'E-Cell members are trained in enterprise operations—from managing budgets and designing brand collateral to leading 50+ member volunteer wings during national festivals.',
+    outcomes: ['Public speaking confidence', 'Budget management', 'Team leadership'],
+    targetAudience: 'E-Cell Committee & Volunteers',
+    frequency: 'Ongoing',
+    highlights: ['Navonmesh Fest leadership', 'Sponsorship pitch training', 'Crisis management']
+  },
+  {
+    id: 'init-6',
+    title: 'Incubation & Grant Facilitation',
+    iconName: 'ShieldCheck',
+    category: 'Funding & Support',
+    shortDescription: 'Navigating government grant schemes (NIDHI-PRAYAS, MSME), patent filing, and campus co-working access with SSGMCE IIC.',
+    longDescription: 'Bridging the gap between a college project and a legally registered business. We assist with company registration, provisional patent drafting, and seed grant applications.',
+    outcomes: ['Government grant funding', 'Patent protection', 'Office space'],
+    targetAudience: 'Advanced student prototypes',
+    frequency: 'Quarterly cohort cycles',
+    highlights: ['DST Grant mentorship', 'IPR documentation', 'Incubation lab desks']
+  }
+];
+
+export const INITIAL_ANNOUNCEMENTS: AnnouncementItem[] = [
+  {
+    id: 'ann-1',
+    title: "Registrations Open: E-Summit '26 Flagship Venture Congress",
+    category: 'Registration Open',
+    description: 'Registrations are officially open for central India’s largest student innovation congress. ₹1,50,000+ prize pool across pitch and hackathon tracks.',
+    date: '2026-04-01',
+    isImportant: true,
+    link: '/events',
+    linkText: 'Register Now',
+    badgeText: 'HOT'
+  },
+  {
+    id: 'ann-2',
+    title: 'Team Navonmesh 2026-27 Committee Inductions Announced',
+    category: 'Team Announcement',
+    description: 'First and second year students can now apply for Management, Technical, PR, and Design wings of E-Cell SSGMCE.',
+    date: '2026-03-28',
+    isImportant: true,
+    link: '/join',
+    linkText: 'Apply to Join',
+    badgeText: 'RECRUITMENT'
+  },
+  {
+    id: 'ann-3',
+    title: 'Genesis Ideathon Track Problem Statements Released',
+    category: 'New Event',
+    description: 'Explore problem statements across AgriTech, AI SaaS, Rural FinTech, and Clean Energy for Genesis 2026.',
+    date: '2026-03-20',
+    isImportant: false,
+    link: '/events',
+    linkText: 'View Tracks',
+    badgeText: 'NEW'
+  },
+  {
+    id: 'ann-4',
+    title: 'Verified E-Certificates Issued for Pursuit 2026 Workshops',
+    category: 'Results',
+    description: 'All participants of the Web Development Workshop can now verify and download their official credential with QR code.',
+    date: '2026-03-29',
+    isImportant: false,
+    link: '/certificates',
+    linkText: 'Check Certificates',
+    badgeText: 'CERTIFICATES'
+  }
+];
+
+export const INITIAL_SPEAKERS: SpeakerItem[] = [
+  {
+    id: 'spk-1',
+    name: 'Mr. Pankaj Nirale',
+    role: 'Country Head',
+    company: 'Red Lane Group, Pune',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
+    topic: 'Product-Market Fit & Lean MVP Experimentation',
+    eventAttended: 'Product Market Fit Masterclass',
+    year: '2025',
+    bio: 'Corporate leader with 15+ years scaling tech and industrial operations across global markets.',
+    linkedin: 'https://linkedin.com',
+    type: 'Industry Leader'
+  },
+  {
+    id: 'spk-2',
+    name: 'Mr. Ankush Dongre',
+    role: 'Senior Mobile Architect',
+    company: 'Tech Industry Veteran',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80',
+    topic: 'Cross-Platform React Native Architecture & Scaling',
+    eventAttended: 'App Development Workshop',
+    year: '2025',
+    bio: 'Mobile systems architect who has developed apps with over 5 million downloads on Play Store.',
+    linkedin: 'https://linkedin.com',
+    type: 'Expert'
+  },
+  {
+    id: 'spk-3',
+    name: 'Devendra Rao',
+    role: 'Founder & CEO',
+    company: 'NeuralForge AI (Alum)',
+    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80',
+    topic: 'Zero to One: Bootstrapping an AI Startup from College',
+    eventAttended: "E-Summit '26 Keynote",
+    year: '2026',
+    bio: 'SSGMCE alumnus who built and raised seed funding for an enterprise AI document processing suite.',
+    linkedin: 'https://linkedin.com',
+    type: 'Alumni'
+  },
+  {
+    id: 'spk-4',
+    name: 'Priyanka Nambiar',
+    role: 'VP of Product',
+    company: 'ScaleStream (ex-Stripe, YC W21)',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80',
+    topic: 'Pricing, GTM, and Angel Fundraising Dynamics',
+    eventAttended: 'Startup Launchpad Bootcamp',
+    year: '2026',
+    bio: 'Product strategist and angel investor helping student founders prepare for global accelerators.',
+    linkedin: 'https://linkedin.com',
+    type: 'Entrepreneur'
+  }
+];
+
+export const INITIAL_PARTNERS: PartnerItem[] = [
+  {
+    id: 'part-1',
+    name: 'Innovation & Incubation Council SSGMCE',
+    category: 'Incubator',
+    logo: 'https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=200&auto=format&fit=crop&q=80',
+    description: 'Central campus incubation facility backed by DST and MSME grants.'
+  },
+  {
+    id: 'part-2',
+    name: 'SSGMCE Alumni Entrepreneurship Network',
+    category: 'Alumni Venture',
+    logo: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=200&auto=format&fit=crop&q=80',
+    description: 'Global network of 5,000+ SSGMCE alumni providing mentorship and angel syndication.'
+  },
+  {
+    id: 'part-3',
+    name: 'Institution’s Innovation Council (IIC - MoE)',
+    category: 'Ecosystem',
+    logo: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=200&auto=format&fit=crop&q=80',
+    description: 'Government of India initiative to promote systematic student innovation.'
+  },
+  {
+    id: 'part-4',
+    name: 'AWS & Google Cloud Student Venture Hub',
+    category: 'Industry Partner',
+    logo: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=200&auto=format&fit=crop&q=80',
+    description: 'Providing up to $2,000 cloud credits per verified collegiate startup team.'
+  }
+];
+
+export const INITIAL_TESTIMONIALS: TestimonialItem[] = [
+  {
+    id: 'test-1',
+    name: 'Rohan Deshmukh',
+    role: 'Founder, VoltSync (3rd Year CSE)',
+    department: 'Computer Science & Engineering',
+    year: 'Class of 2026',
+    quote: 'E-Cell SSGMCE transformed my college journey. What started as a mini-project in the lab became an award-winning prototype with ₹1L in grants thanks to the mentorship and Genesis Ideathon!',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80',
+    eventAttended: "Genesis Ideathon & E-Summit '26",
+    type: 'Student',
+    rating: 5
+  },
+  {
+    id: 'test-2',
+    name: 'Sakshi Patil',
+    role: 'PR & Outreach Lead, Team Navonmesh',
+    department: 'Information Technology',
+    year: 'Class of 2026',
+    quote: 'Being part of E-Cell gave me real-world executive leadership skills. Managing sponsorships and coordinating national events with 600+ delegates is an experience you can never get in a classroom.',
+    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&auto=format&fit=crop&q=80',
+    eventAttended: 'Team Navonmesh Council',
+    type: 'Student',
+    rating: 5
+  },
+  {
+    id: 'test-3',
+    name: 'Mr. Pankaj Nirale',
+    role: 'Country Head, Red Lane Group',
+    department: 'Industry Partner & Speaker',
+    year: 'Visiting Expert',
+    quote: 'The energy, intellectual curiosity, and disciplined execution of the E-Cell SSGMCE student organizers is exceptional. Their events rival professional tech symposiums in tier-1 cities.',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80',
+    eventAttended: 'Product-Market Fit Masterclass',
+    type: 'Speaker',
+    rating: 5
+  },
+  {
+    id: 'test-4',
+    name: 'Dr. S. B. Somani',
+    role: 'Principal, SSGMCE Shegaon',
+    department: 'Chief Patron',
+    year: 'Faculty Leadership',
+    quote: 'E-Cell SSGMCE is a cornerstone of our institution’s innovation ecosystem. We are proud of how our students blend engineering excellence with entrepreneurial leadership to create societal impact.',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&auto=format&fit=crop&q=80',
+    eventAttended: 'Institutional Governance',
+    type: 'Faculty',
+    rating: 5
+  }
+];
+
+export const INITIAL_STORIES: StoryItem[] = [
+  {
+    id: 'story-1',
+    title: "Behind The Scenes: How Team Navonmesh Built E-Summit '26",
+    category: 'Behind The Scenes',
+    date: '2026-04-20',
+    readTime: '4 min read',
+    banner: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=1000&auto=format&fit=crop&q=80',
+    author: 'Ashlesha Sultane',
+    authorRole: 'Editorial & Content Lead',
+    authorAvatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&auto=format&fit=crop&q=80',
+    excerpt: 'From 3 AM design sprints to coordinating 50+ startup booths and hosting angel investors across India, here is how SSGMCE organized central India’s biggest student venture congress.',
+    content: `Organizing E-Summit '26 was not just an event—it was a test of teamwork, endurance, and strategic execution. Over 45 committee members across 8 wings synchronized their efforts over 60 days to welcome 600+ delegates from 25 colleges.
+
+The Technical wing deployed our custom real-time ticketing and badge issuance platform; the PR wing achieved 50,000+ organic impressions; and our Management wing orchestrated seamless food, guest hospitality, and auditorium audio-visual flows.
+
+This summit proved once again that when students are given trust and autonomy, they build world-class experiences.`,
+    featured: true
+  },
+  {
+    id: 'story-2',
+    title: 'From College Lab Prototype to MeitY Grand Winner: The VoltSync Journey',
+    category: 'Member Spotlight',
+    date: '2026-03-15',
+    readTime: '5 min read',
+    banner: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=1000&auto=format&fit=crop&q=80',
+    author: 'Atharv Sonone',
+    authorRole: 'Chairperson, E-Cell SSGMCE',
+    authorAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80',
+    excerpt: 'How two CSE 3rd year students used the E-Cell prototyping sandbox to build an EV battery telemetry algorithm that won ₹1,00,000 at the National Hackathon.',
+    content: `When Aarav and his team first pitched their battery health monitor during the Genesis Ideathon, their circuit was held together with breadboards and tape.
+
+Through dedicated mentoring from faculty coordinator Dr. D. D. Nawgaje and hardware fabrication lab access, the team refined their CAN-bus telemetry module. Six months later, they stood on the national podium in New Delhi receiving the top prize from government dignitaries.`,
+    featured: true
+  },
+  {
+    id: 'story-3',
+    title: 'Why Every Engineering Student Should Join a Committee',
+    category: 'Team Story',
+    date: '2026-02-10',
+    readTime: '3 min read',
+    banner: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1000&auto=format&fit=crop&q=80',
+    author: 'Dolly Bhutada',
+    authorRole: 'Vice-Chairperson',
+    authorAvatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&auto=format&fit=crop&q=80',
+    excerpt: 'Technical skills get you interviews, but leadership, crisis management, and stakeholder empathy make you an unforgettable leader.',
+    content: `Working in E-Cell teaches you the unwritten curriculum of engineering: how to negotiate with corporate sponsors, how to lead peers without formal authority, and how to stay calm when a live demo encounters unexpected turbulence. These experiences forge lifelong confidence.`,
+    featured: false
+  }
+];
+
+export const INITIAL_APPLICATIONS: JoinApplication[] = [
+  {
+    id: 'app-1',
+    fullName: 'Ravi Teja Kulkarni',
+    email: 'ravi.kulkarni@ssgmce.ac.in',
+    phone: '+91 94231 55678',
+    department: 'Computer Science & Engineering',
+    year: '2nd Year',
+    collegeId: '2024CS0218',
+    domainInterest: ['Technical', 'Management'],
+    whyJoin: 'I want to build full-stack web platforms for E-Cell events, contribute to open-source campus tools, and learn leadership.',
+    previousExperience: 'Built the branch coding club website and participated in Genesis Ideathon 2025.',
+    status: 'pending',
+    submittedAt: '2026-08-25'
+  },
+  {
+    id: 'app-2',
+    fullName: 'Tanvi Shinde',
+    email: 'tanvi.shinde@ssgmce.ac.in',
+    phone: '+91 98812 33445',
+    department: 'Information Technology',
+    year: '1st Year',
+    collegeId: '2025IT0104',
+    domainInterest: ['Social Media & Content', 'Publicity & PR'],
+    whyJoin: 'I am passionate about graphic design, video editing for Instagram reels, and writing engaging tech event stories.',
+    previousExperience: 'Managed school cultural fest social media handle and Canva design portfolios.',
+    status: 'reviewed',
+    submittedAt: '2026-08-26'
+  }
+];
+
+export const INITIAL_CONTACT_MESSAGES: ContactMessage[] = [
+  {
+    id: 'msg-1',
+    name: 'Kunal Joshi',
+    email: 'kunal.joshi@techcorp.in',
+    phone: '+91 98220 11223',
+    subject: 'Corporate Sponsorship Inquiry for E-Summit 2026',
+    message: 'Hello Team Navonmesh, our company would like to explore Title Sponsorship and mentorship booth opportunities for your upcoming E-Summit.',
+    status: 'unread',
+    createdAt: '2026-08-27'
+  },
+  {
+    id: 'msg-2',
+    name: 'Pooja Raut',
+    email: 'pooja.raut@coep.ac.in',
+    phone: '+91 97654 44556',
+    subject: 'Inter-College Ideathon Delegation Registration',
+    message: 'We have a contingent of 12 students from COEP Pune wishing to participate in the Genesis Ideathon. Can we get bulk registration assistance?',
+    status: 'read',
+    createdAt: '2026-08-24'
+  }
+];
+

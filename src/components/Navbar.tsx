@@ -19,7 +19,9 @@ import {
   MessageSquare, 
   LayoutDashboard,
   CheckCircle2,
-  ChevronDown
+  ChevronDown,
+  Trophy,
+  Mail
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -53,23 +55,26 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate, onOpenA
 
   const publicNavLinks = [
     { label: 'Home', path: '/', icon: Rocket },
-    { label: 'Events & Workshops', path: '/events', icon: Calendar },
-    { label: 'Team & Committee', path: '/committee', icon: Users },
-    { label: 'Startups', path: '/startups', icon: Rocket },
+    { label: 'About', path: '/about', icon: ShieldCheck },
+    { label: 'Team', path: '/committee', icon: Users },
+    { label: 'Initiatives', path: '/initiatives', icon: Sparkles },
+    { label: 'Events', path: '/events', icon: Calendar },
+    { label: 'Gallery', path: '/gallery', icon: Award },
+    { label: 'Achievements', path: '/achievements', icon: Trophy },
     { label: 'Mentors', path: '/mentors', icon: Compass },
-    { label: 'Pitch Arena', path: '/pitch-arena', icon: Award },
-    { label: 'Community', path: '/community', icon: MessageSquare },
-    { label: 'About E-Cell', path: '/about', icon: ShieldCheck },
+    { label: 'Startups', path: '/startups', icon: Rocket },
+    { label: 'Contact', path: '/contact', icon: Mail },
     { label: 'E-CELL AI', path: '/ai-assistant', icon: Sparkles, highlight: true }
   ];
 
   const authNavLinks = [
     { label: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
-    { label: 'Events & Workshops', path: '/events', icon: Calendar },
-    { label: 'Team & Committee', path: '/committee', icon: Users },
+    { label: 'Events', path: '/events', icon: Calendar },
+    { label: 'Team', path: '/committee', icon: Users },
+    { label: 'Initiatives', path: '/initiatives', icon: Sparkles },
     { label: 'Startups', path: '/startups', icon: Rocket },
     { label: 'Mentors', path: '/mentors', icon: Compass },
-    { label: 'Pitch Arena', path: '/pitch-arena', icon: Award },
+    { label: 'Gallery', path: '/gallery', icon: Award },
     { label: 'Co-Founders', path: '/co-founders', icon: Users },
     { label: 'Certificates', path: '/certificates', icon: ShieldCheck },
     { label: 'E-CELL AI', path: '/ai-assistant', icon: Sparkles, highlight: true }

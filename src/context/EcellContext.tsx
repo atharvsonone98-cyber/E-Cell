@@ -12,7 +12,17 @@ import {
   AdminAnalyticsData,
   NotificationItem,
   MentorshipRequest,
-  CommitteeMember
+  CommitteeMember,
+  GalleryItem,
+  AchievementItem,
+  InitiativeItem,
+  AnnouncementItem,
+  SpeakerItem,
+  PartnerItem,
+  TestimonialItem,
+  JoinApplication,
+  ContactMessage,
+  StoryItem
 } from '../types';
 import {
   INITIAL_EVENTS,
@@ -26,7 +36,17 @@ import {
   INITIAL_LEADERBOARD,
   INITIAL_ANALYTICS,
   INITIAL_NOTIFICATIONS,
-  INITIAL_COMMITTEE
+  INITIAL_COMMITTEE,
+  INITIAL_GALLERY,
+  INITIAL_ACHIEVEMENTS,
+  INITIAL_INITIATIVES,
+  INITIAL_ANNOUNCEMENTS,
+  INITIAL_SPEAKERS,
+  INITIAL_PARTNERS,
+  INITIAL_TESTIMONIALS,
+  INITIAL_STORIES,
+  INITIAL_APPLICATIONS,
+  INITIAL_CONTACT_MESSAGES
 } from '../data/initialData';
 import { useAuth } from './AuthContext';
 import confetti from 'canvas-confetti';
@@ -45,6 +65,16 @@ interface EcellContextType {
   pitches: PitchItem[];
   certificates: CertificateItem[];
   committee: CommitteeMember[];
+  gallery: GalleryItem[];
+  achievements: AchievementItem[];
+  initiatives: InitiativeItem[];
+  announcements: AnnouncementItem[];
+  speakers: SpeakerItem[];
+  partners: PartnerItem[];
+  testimonials: TestimonialItem[];
+  stories: StoryItem[];
+  applications: JoinApplication[];
+  contactMessages: ContactMessage[];
   posts: CommunityPost[];
   resources: ResourceItem[];
   cofounders: CoFounderCandidate[];
@@ -75,6 +105,21 @@ interface EcellContextType {
   createCommitteeMember: (data: Omit<CommitteeMember, 'id'>) => Promise<boolean>;
   updateCommitteeMember: (id: string, updates: Partial<CommitteeMember>) => Promise<boolean>;
   deleteCommitteeMember: (id: string) => Promise<boolean>;
+  createAnnouncement: (data: Omit<AnnouncementItem, 'id'>) => Promise<boolean>;
+  deleteAnnouncement: (id: string) => Promise<boolean>;
+  createGalleryItem: (data: Omit<GalleryItem, 'id'>) => Promise<boolean>;
+  deleteGalleryItem: (id: string) => Promise<boolean>;
+  createAchievement: (data: Omit<AchievementItem, 'id'>) => Promise<boolean>;
+  deleteAchievement: (id: string) => Promise<boolean>;
+  createInitiative: (data: Omit<InitiativeItem, 'id'>) => Promise<boolean>;
+  deleteInitiative: (id: string) => Promise<boolean>;
+  createSpeaker: (data: Omit<SpeakerItem, 'id'>) => Promise<boolean>;
+  deleteSpeaker: (id: string) => Promise<boolean>;
+  createTestimonial: (data: Omit<TestimonialItem, 'id'>) => Promise<boolean>;
+  deleteTestimonial: (id: string) => Promise<boolean>;
+  submitApplication: (data: Omit<JoinApplication, 'id' | 'status' | 'submittedAt'>) => Promise<boolean>;
+  updateApplicationStatus: (id: string, status: JoinApplication['status']) => Promise<boolean>;
+  submitContactMessage: (data: Omit<ContactMessage, 'id' | 'status' | 'createdAt'>) => Promise<boolean>;
   markNotificationRead: (id?: string) => void;
   refreshData: () => Promise<void>;
 }
@@ -90,6 +135,16 @@ export const EcellProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [pitches, setPitches] = useState<PitchItem[]>(INITIAL_PITCHES);
   const [certificates, setCertificates] = useState<CertificateItem[]>(INITIAL_CERTIFICATES);
   const [committee, setCommittee] = useState<CommitteeMember[]>(INITIAL_COMMITTEE);
+  const [gallery, setGallery] = useState<GalleryItem[]>(INITIAL_GALLERY);
+  const [achievements, setAchievements] = useState<AchievementItem[]>(INITIAL_ACHIEVEMENTS);
+  const [initiatives, setInitiatives] = useState<InitiativeItem[]>(INITIAL_INITIATIVES);
+  const [announcements, setAnnouncements] = useState<AnnouncementItem[]>(INITIAL_ANNOUNCEMENTS);
+  const [speakers, setSpeakers] = useState<SpeakerItem[]>(INITIAL_SPEAKERS);
+  const [partners, setPartners] = useState<PartnerItem[]>(INITIAL_PARTNERS);
+  const [testimonials, setTestimonials] = useState<TestimonialItem[]>(INITIAL_TESTIMONIALS);
+  const [stories, setStories] = useState<StoryItem[]>(INITIAL_STORIES);
+  const [applications, setApplications] = useState<JoinApplication[]>(INITIAL_APPLICATIONS);
+  const [contactMessages, setContactMessages] = useState<ContactMessage[]>(INITIAL_CONTACT_MESSAGES);
   const [posts, setPosts] = useState<CommunityPost[]>(INITIAL_COMMUNITY_POSTS);
   const [resources, setResources] = useState<ResourceItem[]>(INITIAL_RESOURCES);
   const [cofounders, setCofounders] = useState<CoFounderCandidate[]>(INITIAL_COFOUNDERS);
@@ -573,6 +628,116 @@ export const EcellProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     return true;
   };
 
+  // 9. Additional CMS Management
+  const createAnnouncement = async (data: Omit<AnnouncementItem, 'id'>): Promise<boolean> => {
+    const newAnn: AnnouncementItem = { ...data, id: `ann-${Date.now()}` };
+    setAnnouncements(prev => [newAnn, ...prev]);
+    showToast('Announcement Published', data.title, 'success');
+    return true;
+  };
+
+  const deleteAnnouncement = async (id: string): Promise<boolean> => {
+    setAnnouncements(prev => prev.filter(a => a.id !== id));
+    showToast('Announcement Deleted', 'Announcement has been removed', 'info');
+    return true;
+  };
+
+  const createGalleryItem = async (data: Omit<GalleryItem, 'id'>): Promise<boolean> => {
+    const newItem: GalleryItem = { ...data, id: `gal-${Date.now()}` };
+    setGallery(prev => [newItem, ...prev]);
+    showToast('Photo Added', data.title, 'success');
+    return true;
+  };
+
+  const deleteGalleryItem = async (id: string): Promise<boolean> => {
+    setGallery(prev => prev.filter(g => g.id !== id));
+    showToast('Photo Deleted', 'Gallery photo removed', 'info');
+    return true;
+  };
+
+  const createAchievement = async (data: Omit<AchievementItem, 'id'>): Promise<boolean> => {
+    const newItem: AchievementItem = { ...data, id: `ach-${Date.now()}` };
+    setAchievements(prev => [newItem, ...prev]);
+    showToast('Achievement Added', data.title, 'success');
+    return true;
+  };
+
+  const deleteAchievement = async (id: string): Promise<boolean> => {
+    setAchievements(prev => prev.filter(a => a.id !== id));
+    showToast('Achievement Deleted', 'Milestone record removed', 'info');
+    return true;
+  };
+
+  const createInitiative = async (data: Omit<InitiativeItem, 'id'>): Promise<boolean> => {
+    const newItem: InitiativeItem = { ...data, id: `init-${Date.now()}` };
+    setInitiatives(prev => [newItem, ...prev]);
+    showToast('Initiative Added', data.title, 'success');
+    return true;
+  };
+
+  const deleteInitiative = async (id: string): Promise<boolean> => {
+    setInitiatives(prev => prev.filter(i => i.id !== id));
+    showToast('Initiative Deleted', 'Initiative removed', 'info');
+    return true;
+  };
+
+  const createSpeaker = async (data: Omit<SpeakerItem, 'id'>): Promise<boolean> => {
+    const newItem: SpeakerItem = { ...data, id: `spk-${Date.now()}` };
+    setSpeakers(prev => [newItem, ...prev]);
+    showToast('Speaker Added', data.name, 'success');
+    return true;
+  };
+
+  const deleteSpeaker = async (id: string): Promise<boolean> => {
+    setSpeakers(prev => prev.filter(s => s.id !== id));
+    showToast('Speaker Removed', 'Speaker record deleted', 'info');
+    return true;
+  };
+
+  const createTestimonial = async (data: Omit<TestimonialItem, 'id'>): Promise<boolean> => {
+    const newItem: TestimonialItem = { ...data, id: `test-${Date.now()}` };
+    setTestimonials(prev => [newItem, ...prev]);
+    showToast('Testimonial Added', `Feedback from ${data.name} published`, 'success');
+    return true;
+  };
+
+  const deleteTestimonial = async (id: string): Promise<boolean> => {
+    setTestimonials(prev => prev.filter(t => t.id !== id));
+    showToast('Testimonial Removed', 'Testimonial record deleted', 'info');
+    return true;
+  };
+
+  const submitApplication = async (data: Omit<JoinApplication, 'id' | 'status' | 'submittedAt'>): Promise<boolean> => {
+    const newApp: JoinApplication = {
+      ...data,
+      id: `app-${Date.now()}`,
+      status: 'pending',
+      submittedAt: new Date().toISOString().split('T')[0]
+    };
+    setApplications(prev => [newApp, ...prev]);
+    showToast('Application Submitted!', 'Thank you for applying to E-Cell SSGMCE. Our recruitment team will review your profile.', 'success');
+    confetti({ particleCount: 60, spread: 70, origin: { y: 0.6 } });
+    return true;
+  };
+
+  const updateApplicationStatus = async (id: string, status: JoinApplication['status']): Promise<boolean> => {
+    setApplications(prev => prev.map(a => a.id === id ? { ...a, status } : a));
+    showToast('Application Updated', `Application status set to ${status.toUpperCase()}`, 'info');
+    return true;
+  };
+
+  const submitContactMessage = async (data: Omit<ContactMessage, 'id' | 'status' | 'createdAt'>): Promise<boolean> => {
+    const newMsg: ContactMessage = {
+      ...data,
+      id: `msg-${Date.now()}`,
+      status: 'unread',
+      createdAt: new Date().toISOString().split('T')[0]
+    };
+    setContactMessages(prev => [newMsg, ...prev]);
+    showToast('Message Sent!', 'We received your inquiry and will respond to your email shortly.', 'success');
+    return true;
+  };
+
   const markNotificationRead = (id?: string) => {
     if (id) {
       setNotifications(prev => prev.map(n => n.id === id ? { ...n, read: true } : n));
@@ -595,6 +760,16 @@ export const EcellProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         pitches,
         certificates,
         committee,
+        gallery,
+        achievements,
+        initiatives,
+        announcements,
+        speakers,
+        partners,
+        testimonials,
+        stories,
+        applications,
+        contactMessages,
         posts,
         resources,
         cofounders,
@@ -625,6 +800,21 @@ export const EcellProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         createCommitteeMember,
         updateCommitteeMember,
         deleteCommitteeMember,
+        createAnnouncement,
+        deleteAnnouncement,
+        createGalleryItem,
+        deleteGalleryItem,
+        createAchievement,
+        deleteAchievement,
+        createInitiative,
+        deleteInitiative,
+        createSpeaker,
+        deleteSpeaker,
+        createTestimonial,
+        deleteTestimonial,
+        submitApplication,
+        updateApplicationStatus,
+        submitContactMessage,
         markNotificationRead,
         refreshData
       }}

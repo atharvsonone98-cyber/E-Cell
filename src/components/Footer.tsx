@@ -56,16 +56,53 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
           {/* Programs */}
           <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-4">Ecosystem</h4>
+            <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-4">Committee & Events</h4>
             <ul className="space-y-2.5 text-xs text-gray-400">
               <li>
-                <button onClick={() => onNavigate('/startups')} className="hover:text-white transition-colors">
-                  Startup Showcase
+                <button onClick={() => onNavigate('/about')} className="hover:text-white transition-colors">
+                  About E-Cell SSGMCE
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('/pitch-arena')} className="hover:text-white transition-colors">
-                  Startup Pitch Arena
+                <button onClick={() => onNavigate('/committee')} className="hover:text-white transition-colors text-blue-400 font-semibold">
+                  Team Navonmesh 2026-27
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('/initiatives')} className="hover:text-white transition-colors">
+                  Programs & Initiatives
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('/events')} className="hover:text-white transition-colors">
+                  Events & Hackathons
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('/achievements')} className="hover:text-white transition-colors">
+                  Awards & Achievements
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('/gallery')} className="hover:text-white transition-colors">
+                  Event Photo Gallery
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('/announcements')} className="hover:text-white transition-colors">
+                  Official Notices
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Innovation & Tools */}
+          <div>
+            <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-4">Innovation & Hub</h4>
+            <ul className="space-y-2.5 text-xs text-gray-400">
+              <li>
+                <button onClick={() => onNavigate('/startups')} className="hover:text-white transition-colors">
+                  Campus Startups
                 </button>
               </li>
               <li>
@@ -75,60 +112,23 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </li>
               <li>
                 <button onClick={() => onNavigate('/co-founders')} className="hover:text-white transition-colors">
-                  Co-Founder Matching
+                  Co-Founder Matrix
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('/committee')} className="hover:text-white transition-colors text-indigo-400 font-semibold">
-                  Committee & Domain Wings
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavigate('/events')} className="hover:text-white transition-colors">
-                  Workshops, Bootcamps & Summits
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavigate('/leaderboard')} className="hover:text-white transition-colors">
-                  XP Leaderboard & Levels
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Resources & AI */}
-          <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-4">Knowledge & Tools</h4>
-            <ul className="space-y-2.5 text-xs text-gray-400">
-              <li>
-                <button onClick={() => onNavigate('/ai-assistant')} className="hover:text-white transition-colors flex items-center gap-1">
-                  <span>E-CELL AI Copilot</span>
-                  <span className="text-[9px] bg-indigo-500/20 text-indigo-400 px-1.5 py-0.2 rounded font-bold border border-indigo-500/20">PRO</span>
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavigate('/resources')} className="hover:text-white transition-colors">
-                  Startup Pitch Deck Templates
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavigate('/resources')} className="hover:text-white transition-colors">
-                  Cap Table & Legal Models
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavigate('/community')} className="hover:text-white transition-colors">
-                  Community Discussion Forum
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavigate('/verify-certificate')} className="hover:text-white transition-colors">
+                <button onClick={() => onNavigate('/certificates')} className="hover:text-white transition-colors">
                   Certificate Verification
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('/about')} className="hover:text-white transition-colors">
-                  Constitution & Framework
+                <button onClick={() => onNavigate('/contact')} className="hover:text-white transition-colors">
+                  Contact Desk & PR
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('/ai-assistant')} className="hover:text-white transition-colors flex items-center gap-1">
+                  <span>E-CELL AI Assistant</span>
+                  <span className="text-[9px] bg-blue-500/20 text-blue-400 px-1.5 py-0.2 rounded font-bold border border-blue-500/20">PRO</span>
                 </button>
               </li>
             </ul>
