@@ -76,6 +76,8 @@ function AppContent() {
       case '/mentors':
         return <MentorsPage />;
       case '/pitch-arena':
+      case '/pitch':
+      case '/pitches':
         return <PitchArenaPage />;
       case '/community':
         return <CommunityPage />;
@@ -86,11 +88,13 @@ function AppContent() {
       case '/verify-certificate':
         return <CertificatesPage />;
       case '/co-founders':
+      case '/cofounders':
       case '/cofounder-match':
         return <CoFoundersPage />;
       case '/resources':
         return <ResourcesPage />;
       case '/ai-assistant':
+      case '/assistant':
         return <AIAssistantPage />;
       case '/dashboard':
         return <DashboardPage onNavigate={handleNavigate} />;
@@ -100,15 +104,26 @@ function AppContent() {
         return <AboutPage onNavigate={handleNavigate} />;
       case '/committee':
       case '/team':
+      case '/join':
+      case '/apply':
+      case '/join-us':
         return <CommitteePage onNavigate={handleNavigate} />;
       case '/gallery':
+      case '/memories':
+      case '/moments':
         return <GalleryPage />;
       case '/achievements':
+      case '/awards':
+      case '/podiums':
         return <AchievementsPage />;
       case '/initiatives':
+      case '/programs':
+      case '/sandbox':
         return <InitiativesPage onNavigate={handleNavigate} />;
       case '/announcements':
       case '/notices':
+      case '/news':
+      case '/newsroom':
         return <AnnouncementsPage onNavigate={handleNavigate} />;
       case '/contact':
         return <ContactPage />;

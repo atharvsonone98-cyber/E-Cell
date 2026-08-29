@@ -80,6 +80,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate, onOpenA
     { label: 'INITIATIVES', path: '/initiatives', icon: Sparkles },
     { label: 'ACHIEVEMENTS', path: '/achievements', icon: Trophy },
     { label: 'STARTUPS', path: '/startups', icon: Rocket },
+    ...(isAdmin ? [{ label: 'ADMIN HUB', path: '/admin', icon: ShieldCheck }] : []),
     { label: 'GALLERY', path: '/gallery', icon: Award }
   ];
 

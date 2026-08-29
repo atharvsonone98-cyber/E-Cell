@@ -41,7 +41,7 @@ export const EcellEventsHub: React.FC<EcellEventsHubProps> = ({
 }) => {
   const { events, showToast, addXP } = useEcell();
   const [activeTab, setActiveTab] = useState<'events' | 'summit-highlights' | 'incubation' | 'leads'>('events');
-  const [selectedEventId, setSelectedEventId] = useState<string>('ecell-summit-26');
+  const [selectedEventId, setSelectedEventId] = useState<string>('ecell-bootcamp-3');
 
   const selectedEvent = events.find(e => e.id === selectedEventId) || events[0];
 
@@ -52,7 +52,7 @@ export const EcellEventsHub: React.FC<EcellEventsHubProps> = ({
       'E-Cell SSGMCE 2026-27 Event Calendar, Pitch Guidelines, and Incubation Handbook saved. (+25 XP)',
       'success'
     );
-    const content = `==========================================================\nENTREPRENEURSHIP CELL (E-CELL) — SSGMCE SHEGAON\nShri Sant Gajanan Maharaj College of Engineering\nOfficial E-Cell Innovation & Event Dossier\n==========================================================\n\nFLAGSHIP ANNUAL CALENDAR & PROGRAMS:\n1. E-SUMMIT '26: Annual Entrepreneurship & Venture Summit (April 18, 2026)\n   - ₹1,50,000+ Total Cash Pool & Grants\n   - 50+ Startup Exhibition Stalls\n   - 15+ Visiting Angel Investors & VCs\n\n2. GENESIS '26: National Ideathon & B-Plan Challenge (May 02, 2026)\n   - ₹50,000 Cash Prize + Direct Pre-Incubation\n   - Problem Tracks: AgriTech, AI SaaS, Clean Energy, Rural FinTech, MedTech\n\n3. STARTUP LAUNCHPAD BOOTCAMP 3.0 (May 15, 2026)\n   - 7-Day Founder Cohort: 0 to MVP Sprint\n   - $1,500 Cloud Credits & Lab Access\n\n4. ANGEL SYNDICATE PITCH NIGHT: Pre-Seed Demo Hour\n   - ₹25,00,000 Syndicate Commitment Pool\n\nE-CELL SSGMCE LEADERSHIP & SUPPORT:\n- Atharv Sonone (Chairperson & Executive Lead)\n- Prof. C. M. Mankar (Chief Incubation Head)\n- Dr. S. B. Somani (Principal Patron)\n\nEmail: atharvsonone98@gmail.com | ecell@ssgmce.ac.in\n==========================================================`;
+    const content = `==========================================================\nENTREPRENEURSHIP CELL (E-CELL) — SSGMCE SHEGAON\nShri Sant Gajanan Maharaj College of Engineering\nOfficial E-Cell Innovation & Event Dossier\n==========================================================\n\nFLAGSHIP ANNUAL CALENDAR & PROGRAMS:\n1. STARTUP LAUNCHPAD BOOTCAMP 3.0 (May 15, 2026)\n   - 7-Day Founder Cohort: 0 to MVP Sprint\n   - $1,500 Cloud Credits & Lab Access\n\n2. ZERO TO ONE: BUILDING FULL-STACK AI PRODUCTS (April 10, 2026)\n   - Full-Stack SaaS & Gemini Workflows\n   - $1,000 Cloud Compute Credits\n\n3. ANGEL SYNDICATE PITCH NIGHT: Pre-Seed Demo Hour (Sept 26, 2026)\n   - ₹25,00,000 Syndicate Commitment Pool\n\n4. CAMPUS IDEATHON & B-PLAN CHALLENGE\n   - Problem Tracks: AgriTech, AI SaaS, Clean Energy, Rural FinTech, MedTech\n\nE-CELL SSGMCE LEADERSHIP & SUPPORT:\n- Atharv Sonone (Chairperson & Executive Lead)\n- Prof. C. M. Mankar (Chief Incubation Head)\n- Dr. S. B. Somani (Principal Patron)\n\nEmail: atharvsonone98@gmail.com | ecell@ssgmce.ac.in\n==========================================================`;
     const element = document.createElement('a');
     const file = new Blob([content], { type: 'text/plain' });
     element.href = URL.createObjectURL(file);
@@ -81,15 +81,15 @@ export const EcellEventsHub: React.FC<EcellEventsHubProps> = ({
             </span>
             <span className="px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-xs font-bold flex items-center gap-1">
               <Rocket className="w-3.5 h-3.5" />
-              <span>Venture Incubation</span>
+              <span>Campus Incubation</span>
             </span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
-            E-Cell Flagship Events & Venture Summits
+            E-Cell Flagship Events & Innovation Conclaves
           </h2>
           <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
-            High-stakes venture summits, inter-college ideathons, 7-day founder launchpads, and live angel syndicate pitch nights curated by the Entrepreneurship Cell at Shri Sant Gajanan Maharaj College of Engineering.
+            High-impact innovation conclaves, inter-college ideathons, 7-day founder launchpads, and live angel syndicate pitch nights curated by the Entrepreneurship Cell at Shri Sant Gajanan Maharaj College of Engineering.
           </p>
         </div>
 
@@ -97,7 +97,7 @@ export const EcellEventsHub: React.FC<EcellEventsHubProps> = ({
         <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 shrink-0">
           <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 text-center min-w-[110px]">
             <p className="text-xl font-black text-amber-400">₹1,50k+</p>
-            <p className="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Summit Prize Pool</p>
+            <p className="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Annual Prize Pool</p>
           </div>
           <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 text-center min-w-[110px]">
             <p className="text-xl font-black text-indigo-400">15+ VCs</p>
@@ -131,7 +131,7 @@ export const EcellEventsHub: React.FC<EcellEventsHubProps> = ({
                 : 'text-slate-400 hover:text-white hover:bg-white/5'
             }`}
           >
-            E-Summit Highlights
+            Conclave Highlights
           </button>
           <button
             onClick={() => setActiveTab('incubation')}
@@ -168,7 +168,7 @@ export const EcellEventsHub: React.FC<EcellEventsHubProps> = ({
             className="px-4 py-2 rounded-xl bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/30 text-indigo-300 text-xs font-bold flex items-center gap-2 transition-all"
           >
             <Terminal className="w-4 h-4 text-indigo-400" />
-            <span>Genesis Challenge Tracks</span>
+            <span>Ideathon Challenge Tracks</span>
           </button>
           <button
             onClick={handleDownloadDossier}
@@ -313,7 +313,7 @@ export const EcellEventsHub: React.FC<EcellEventsHubProps> = ({
         </div>
       )}
 
-      {/* Tab 2: E-Summit Highlights */}
+      {/* Tab 2: Conclave Highlights */}
       {activeTab === 'summit-highlights' && (
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/10 space-y-4">

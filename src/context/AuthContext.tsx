@@ -64,10 +64,23 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       console.warn('API login fallback to local user lookup');
     }
 
-    // Fallback lookup
-    const found = INITIAL_USERS.find(u => u.email.toLowerCase() === email.toLowerCase()) || INITIAL_USERS[0];
-    setUser(found);
-    setToken(`demo_token_${found.id}`);
+    const found = INITIAL_USERS.find(u => u.email.toLowerCase() === email.toLowerCase());
+    if (found) {
+      setUser(found);
+      setToken(`demo_token_${found.id}`);
+      return true;
+    }
+    
+    // Default fallback
+    if (email.toLowerCase().includes('admin') || email.toLowerCase() === 'atharvsonone98@gmail.com') {
+      const adminUser = INITIAL_USERS.find(u => u.role === 'admin') || INITIAL_USERS[1];
+      setUser(adminUser);
+      setToken(`demo_token_${adminUser.id}`);
+      return true;
+    }
+
+    setUser(INITIAL_USERS[0]);
+    setToken(`demo_token_${INITIAL_USERS[0].id}`);
     return true;
   };
 
@@ -194,7 +207,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         addXP,
         updateUser,
         isAuthenticated: !!user,
-        isAdmin: user?.role === 'admin',
+        isAdmin: user?.role === 'admin' || user?.email?.toLowerCase() === 'atharvsonone98@gmail.com',
         isMentor: user?.role === 'mentor',
         isFounder: user?.role === 'founder' || !!user?.startupId
       }}

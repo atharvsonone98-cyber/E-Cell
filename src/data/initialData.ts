@@ -586,16 +586,16 @@ export const INITIAL_COMMITTEE: CommitteeMember[] = [
 
 export const INITIAL_EVENTS: EventItem[] = [
   {
-    id: 'ecell-summit-26',
-    title: "E-Summit '26: Annual Entrepreneurship & Venture Summit",
-    tagline: 'Central India’s Largest Student Venture Congress & Innovation Conclave with ₹1,50,000+ Prize Pool',
+    id: 'ecell-conclave-main',
+    title: "Annual Innovation & Entrepreneurship Conclave",
+    tagline: 'Central India’s Premier Student Venture Congress & Innovation Summit with ₹1,50,000+ Prize Pool',
     category: 'Pitch Competitions',
     date: '2026-04-18',
     time: '09:30 AM - 06:30 PM IST',
     location: 'SSGMCE Main Auditorium & Centenary Quadrangle, Shegaon',
     isVirtual: false,
     bannerImage: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=1000&auto=format&fit=crop&q=80',
-    description: 'E-Summit is the annual flagship entrepreneurship congress of E-Cell SSGMCE. Uniting visionary venture capitalists, angel syndicates, startup founders, and collegiate innovators across India for keynote masterclasses, 50+ startup stalls expo, high-stakes live pitch battles, and venture grant matching.',
+    description: 'The annual flagship entrepreneurship congress of E-Cell SSGMCE. Uniting visionary venture capitalists, angel syndicates, startup founders, and collegiate innovators across India for keynote masterclasses, 50+ startup stalls expo, high-stakes live pitch battles, and venture grant matching.',
     facultyLead: 'Prof. C. M. Mankar (Chief Incubation Head) & Dr. S. B. Somani',
     workshopTeam: [
       { name: 'Atharv Sonone', role: 'Chairperson & Executive Lead', department: 'E-Cell SSGMCE' },
@@ -612,7 +612,7 @@ export const INITIAL_EVENTS: EventItem[] = [
       '₹1,50,000+ Total Cash Prizes, Venture Grants & Trophies',
       'Direct one-on-one networking with 15+ visiting Angel Investors & VCs',
       'SSGMCE Incubation Center Fast-Track Pre-Seed Access',
-      'Official E-Summit Certificate of Excellence & Swag Kits'
+      'Official Conclave Certificate of Excellence & Swag Kits'
     ],
     speakers: [
       { name: 'Devendra Rao', role: 'Founder & CEO', company: 'NeuralForge AI', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&auto=format&fit=crop&q=80' },
@@ -622,7 +622,7 @@ export const INITIAL_EVENTS: EventItem[] = [
     schedule: [
       { time: '09:30 AM', title: 'Grand Inauguration & Keynote Address', description: 'Opening by College Dignitaries and Chief Guest Venture Capitalists.' },
       { time: '11:00 AM', title: 'Startup Expo & Innovation Stalls Walkthrough', description: 'Interactive demo booths featuring 50+ student ventures.' },
-      { time: '02:00 PM', title: 'E-Summit Shark Pitch Arena (Top 10 Finalists)', description: '5-minute live founder pitches in front of angel jury.' },
+      { time: '02:00 PM', title: 'Shark Pitch Arena (Top 10 Finalists)', description: '5-minute live founder pitches in front of angel jury.' },
       { time: '05:00 PM', title: 'Award Ceremony & Seed Grant Commitments', description: 'Prize handover and incubation onboarding.' }
     ],
     capacity: 600,
@@ -634,8 +634,8 @@ export const INITIAL_EVENTS: EventItem[] = [
     featured: true
   },
   {
-    id: 'ecell-genesis-ideathon',
-    title: "GENESIS '26: National Ideathon & B-Plan Challenge",
+    id: 'ecell-ideathon-sprint',
+    title: 'National Ideathon & B-Plan Challenge',
     tagline: 'Transform Disruptive Ideas into Seed-Funded Startups with ₹50,000+ Cash Pool',
     category: 'Hackathons',
     date: '2026-05-02',
@@ -643,7 +643,7 @@ export const INITIAL_EVENTS: EventItem[] = [
     location: 'SSGMCE Innovation Complex & Computer Labs, Shegaon',
     isVirtual: false,
     bannerImage: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=1000&auto=format&fit=crop&q=80',
-    description: 'Genesis is E-Cell SSGMCE’s flagship inter-college ideathon and business model challenge. Teams tackle real-world tracks across AgriTech, AI SaaS, Clean Energy, Rural FinTech, and MedTech to pitch viable commercial solutions to industry evaluators.',
+    description: 'E-Cell SSGMCE’s flagship inter-college ideathon and business model challenge. Teams tackle real-world tracks across AgriTech, AI SaaS, Clean Energy, Rural FinTech, and MedTech to pitch viable commercial solutions to industry evaluators.',
     facultyLead: 'Prof. S. U. Deshmukh & Dr. D. D. Nawgaje',
     workshopTeam: [
       { name: 'Om Hurpade', role: 'Technical & Challenge Lead', department: 'Technical Wing' },
@@ -878,7 +878,7 @@ export const INITIAL_STARTUPS: StartupItem[] = [
     marketSize: '$3.8B Digital Pathology and AI Oncology market in APAC.',
     businessModel: 'Usage-based API pricing per slide processed with hospital PACS enterprise integration.',
     technology: ['PyTorch', 'FastAPI', 'Wasm', 'React', 'Docker'],
-    fundingStatus: 'Bootstrapped + ₹5L E-Cell Genesis Grant',
+    fundingStatus: 'Bootstrapped + ₹5L E-Cell Innovation Grant',
     website: 'https://medimorph.example.com',
     pitchDeckUrl: '#',
     featured: true,
@@ -1110,7 +1110,7 @@ export const INITIAL_CERTIFICATES: CertificateItem[] = [
     userName: 'Aarav Sharma',
     userEmail: 'aarav.sharma@ssgmce.ac.in',
     collegeId: '2023CS0142',
-    eventName: 'Genesis Hackathon 2026: CleanTech Track (SSGMCE)',
+    eventName: 'National Innovation Hackathon: CleanTech Track (SSGMCE)',
     issueDate: '2026-02-16',
     category: '1st Place Winner & Best Technical Innovation',
     rank: 'Winner (1st Prize)',
@@ -1158,7 +1158,7 @@ export const INITIAL_COMMUNITY_POSTS: CommunityPost[] = [
     authorRole: 'Founder • VoltSync',
     authorBranch: 'CSE 3rd Year',
     title: 'Looking for a UI/UX Designer & Product Marketer for our EV Battery Diagnostics Platform',
-    content: 'Hey everyone! We recently won the Genesis Hackathon and received our pre-seed incubation grant. We are currently redesigning our telematics web dashboard for pilot fleet testing with 20 commercial electric vans. Looking for someone with Figma expertise and design systems experience to join as a founding team member! Reach out with your portfolio.',
+    content: 'Hey everyone! We recently won the Campus Innovation Hackathon and received our pre-seed incubation grant. We are currently redesigning our telematics web dashboard for pilot fleet testing with 20 commercial electric vans. Looking for someone with Figma expertise and design systems experience to join as a founding team member! Reach out with your portfolio.',
     category: 'Team Search',
     tags: ['CoFounder', 'UIUX', 'Figma', 'CleanTech', 'Hiring'],
     likes: 38,
@@ -1230,7 +1230,7 @@ export const INITIAL_RESOURCES: ResourceItem[] = [
     category: 'Pitching',
     type: 'Template',
     description: 'Battle-tested Google Slides & Figma pitch deck template used by 18 collegiate startups to raise over ₹5 Cr in institutional seed and angel capital.',
-    author: 'E-Cell Venture Incubation Desk',
+    author: 'E-Cell Incubation & Mentorship Desk',
     downloadsCount: 1420,
     fileSize: '4.8 MB',
     url: '#',
@@ -1311,7 +1311,7 @@ export const INITIAL_COFOUNDERS: CoFounderCandidate[] = [
     branch: 'Mechanical Engineering & Minor in Finance',
     year: '4th Year',
     skills: ['B2B Sales', 'Financial Modeling', 'Supply Chain', 'Go-To-Market', 'Contract Law'],
-    experience: 'Organized National E-Summit; Closed ₹18L in corporate sponsorships; Ran college consulting club.',
+    experience: 'Organized National Innovation Conclave; Closed ₹18L in corporate sponsorships; Ran college consulting club.',
     interests: ['FinTech', 'Supply Chain', 'Mobility', 'Industrial Tech'],
     lookingFor: ['Technical Co-Founder', 'Full Stack Lead', 'AI Engineer'],
     compatibility: 91,
@@ -1461,7 +1461,7 @@ export const INITIAL_ANALYTICS: AdminAnalyticsData = {
     { label: 'Jul', students: 584, mentors: 18, founders: 42 }
   ],
   eventRegistrationsByMonth: [
-    { month: 'Genesis Hackathon', registrations: 350, attendees: 284 },
+    { month: 'Innovation Sprint', registrations: 350, attendees: 284 },
     { month: 'Zero to One MVP', registrations: 150, attendees: 132 },
     { month: 'Angel Pitch Night', registrations: 80, attendees: 68 },
     { month: 'Venture Fireside', registrations: 500, attendees: 420 },
@@ -1482,7 +1482,7 @@ export const INITIAL_ANALYTICS: AdminAnalyticsData = {
     { level: 'Level 5: Entrepreneur', users: 10 }
   ],
   recentActivities: [
-    { id: 'act-1', user: 'Aarav Sharma', action: 'registered for', target: 'E-SUMMIT 2026: Genesis Hackathon', time: '10 mins ago', type: 'event' },
+    { id: 'act-1', user: 'Aarav Sharma', action: 'registered for', target: 'National Innovation Hackathon', time: '10 mins ago', type: 'event' },
     { id: 'act-2', user: 'Tanvi Deshmukh', action: 'booked mentorship with', target: 'Priyanka Nambiar', time: '25 mins ago', type: 'mentorship' },
     { id: 'act-3', user: 'Rhea Sen', action: 'submitted new pitch for', target: 'CodeSentry AI', time: '1 hour ago', type: 'pitch' },
     { id: 'act-4', user: 'Admin Desk', action: 'issued verified certificate to', target: 'Rehea Chakraborty (ECELL-2025-004521)', time: '3 hours ago', type: 'certificate' },
@@ -1495,7 +1495,7 @@ export const INITIAL_NOTIFICATIONS: NotificationItem[] = [
     id: 'ntf-1',
     userId: 'usr-student-1',
     title: 'Registration Confirmed! (+50 XP)',
-    message: 'You have secured your seat for E-SUMMIT 2026: Genesis Hackathon. Check your student pass.',
+    message: 'You have secured your seat for National Innovation Hackathon. Check your student pass.',
     type: 'event',
     read: false,
     link: '/events/evt-1',
@@ -1515,7 +1515,7 @@ export const INITIAL_NOTIFICATIONS: NotificationItem[] = [
     id: 'ntf-3',
     userId: 'usr-student-1',
     title: 'Verified Certificate Issued',
-    message: 'Your official certificate for Genesis Hackathon 2026 (ECELL-2026-001245) is ready in your wallet.',
+    message: 'Your official certificate for National Innovation Hackathon (ECELL-2026-001245) is ready in your wallet.',
     type: 'certificate',
     read: true,
     link: '/certificates',
@@ -1563,7 +1563,7 @@ export const STORIES_LIST = [
   },
   {
     id: 'str-3',
-    title: 'The 2026 E-Summit Highlights & Genesis Demo Day Recap',
+    title: 'Innovation Conclave Highlights & Demo Day Recap',
     category: 'Event Recap',
     author: 'E-Cell Media Board',
     readTime: '4 min read',
@@ -1905,8 +1905,8 @@ export const INITIAL_WORK_REPORTS: WorkReportItem[] = [
 export const INITIAL_GALLERY: GalleryItem[] = [
   {
     id: 'gal-1',
-    title: 'E-Summit Flagship Inauguration & Keynote',
-    eventName: "E-Summit '26",
+    title: 'Innovation Conclave Inauguration & Keynote',
+    eventName: "Innovation Conclave",
     date: '2026-04-18',
     category: 'Events',
     imageUrl: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=1000&auto=format&fit=crop&q=80',
@@ -1927,8 +1927,8 @@ export const INITIAL_GALLERY: GalleryItem[] = [
   },
   {
     id: 'gal-3',
-    title: 'Genesis Ideathon Live Pitch Jury Battle',
-    eventName: "Genesis '26 Ideathon",
+    title: 'Ideathon Live Pitch Jury Battle',
+    eventName: "Ideathon & B-Plan Challenge",
     date: '2026-05-02',
     category: 'Competitions',
     imageUrl: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=1000&auto=format&fit=crop&q=80',
@@ -2086,7 +2086,7 @@ export const INITIAL_INITIATIVES: InitiativeItem[] = [
     title: 'National Pitch Competitions & Hackathons',
     iconName: 'Trophy',
     category: 'Competitive Sprints',
-    shortDescription: 'High-energy national competitions like Genesis Ideathon and Srujan 24h Hackathon with cash prize pools and jury evaluations.',
+    shortDescription: 'High-energy national competitions like Campus Ideathon and Srujan 24h Hackathon with cash prize pools and jury evaluations.',
     longDescription: 'The arena where raw ideas are pressure-tested. Teams work across tracks in AI, AgriTech, FinTech, and CleanTech to present workable solutions in front of angel investors and corporate executives.',
     outcomes: ['Cash prize pools', 'Pre-incubation slots', 'Venture capital visibility'],
     targetAudience: 'Student teams across India',
@@ -2134,7 +2134,7 @@ export const INITIAL_INITIATIVES: InitiativeItem[] = [
 export const INITIAL_ANNOUNCEMENTS: AnnouncementItem[] = [
   {
     id: 'ann-1',
-    title: "Registrations Open: E-Summit '26 Flagship Venture Congress",
+    title: "Registrations Open: Annual Innovation Conclave",
     category: 'Registration Open',
     description: 'Registrations are officially open for central India’s largest student innovation congress. ₹1,50,000+ prize pool across pitch and hackathon tracks.',
     date: '2026-04-01',
@@ -2156,9 +2156,9 @@ export const INITIAL_ANNOUNCEMENTS: AnnouncementItem[] = [
   },
   {
     id: 'ann-3',
-    title: 'Genesis Ideathon Track Problem Statements Released',
+    title: 'Ideathon Track Problem Statements Released',
     category: 'New Event',
-    description: 'Explore problem statements across AgriTech, AI SaaS, Rural FinTech, and Clean Energy for Genesis 2026.',
+    description: 'Explore problem statements across AgriTech, AI SaaS, Rural FinTech, and Clean Energy for Campus Ideathon.',
     date: '2026-03-20',
     isImportant: false,
     link: '/events',
@@ -2212,7 +2212,7 @@ export const INITIAL_SPEAKERS: SpeakerItem[] = [
     company: 'NeuralForge AI (Alum)',
     avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80',
     topic: 'Zero to One: Bootstrapping an AI Startup from College',
-    eventAttended: "E-Summit '26 Keynote",
+    eventAttended: "Annual Conclave Keynote",
     year: '2026',
     bio: 'SSGMCE alumnus who built and raised seed funding for an enterprise AI document processing suite.',
     linkedin: 'https://linkedin.com',
@@ -2271,9 +2271,9 @@ export const INITIAL_TESTIMONIALS: TestimonialItem[] = [
     role: 'Founder, VoltSync (3rd Year CSE)',
     department: 'Computer Science & Engineering',
     year: 'Class of 2026',
-    quote: 'E-Cell SSGMCE transformed my college journey. What started as a mini-project in the lab became an award-winning prototype with ₹1L in grants thanks to the mentorship and Genesis Ideathon!',
+    quote: 'E-Cell SSGMCE transformed my college journey. What started as a mini-project in the lab became an award-winning prototype with ₹1L in grants thanks to the mentorship and campus ideathon!',
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80',
-    eventAttended: "Genesis Ideathon & E-Summit '26",
+    eventAttended: "Campus Ideathon & Conclave",
     type: 'Student',
     rating: 5
   },
@@ -2318,7 +2318,7 @@ export const INITIAL_TESTIMONIALS: TestimonialItem[] = [
 export const INITIAL_STORIES: StoryItem[] = [
   {
     id: 'story-1',
-    title: "Behind The Scenes: How Team Navonmesh Built E-Summit '26",
+    title: "Behind The Scenes: How Team Navonmesh Built the Annual Conclave",
     category: 'Behind The Scenes',
     date: '2026-04-20',
     readTime: '4 min read',
@@ -2326,8 +2326,8 @@ export const INITIAL_STORIES: StoryItem[] = [
     author: 'Ashlesha Sultane',
     authorRole: 'Editorial & Content Lead',
     authorAvatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&auto=format&fit=crop&q=80',
-    excerpt: 'From 3 AM design sprints to coordinating 50+ startup booths and hosting angel investors across India, here is how SSGMCE organized central India’s biggest student venture congress.',
-    content: `Organizing E-Summit '26 was not just an event—it was a test of teamwork, endurance, and strategic execution. Over 45 committee members across 8 wings synchronized their efforts over 60 days to welcome 600+ delegates from 25 colleges.
+    excerpt: 'From 3 AM design sprints to coordinating 50+ startup booths and hosting angel investors across India, here is how SSGMCE organized central India’s premier student innovation congress.',
+    content: `Organizing the Annual Conclave was not just an event—it was a test of teamwork, endurance, and strategic execution. Over 45 committee members across 8 wings synchronized their efforts over 60 days to welcome 600+ delegates from 25 colleges.
 
 The Technical wing deployed our custom real-time ticketing and badge issuance platform; the PR wing achieved 50,000+ organic impressions; and our Management wing orchestrated seamless food, guest hospitality, and auditorium audio-visual flows.
 
@@ -2345,7 +2345,7 @@ This summit proved once again that when students are given trust and autonomy, t
     authorRole: 'Chairperson, E-Cell SSGMCE',
     authorAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80',
     excerpt: 'How two CSE 3rd year students used the E-Cell prototyping sandbox to build an EV battery telemetry algorithm that won ₹1,00,000 at the National Hackathon.',
-    content: `When Aarav and his team first pitched their battery health monitor during the Genesis Ideathon, their circuit was held together with breadboards and tape.
+    content: `When Aarav and his team first pitched their battery health monitor during the Campus Ideathon, their circuit was held together with breadboards and tape.
 
 Through dedicated mentoring from faculty coordinator Dr. D. D. Nawgaje and hardware fabrication lab access, the team refined their CAN-bus telemetry module. Six months later, they stood on the national podium in New Delhi receiving the top prize from government dignitaries.`,
     featured: true
@@ -2377,7 +2377,7 @@ export const INITIAL_APPLICATIONS: JoinApplication[] = [
     collegeId: '2024CS0218',
     domainInterest: ['Technical', 'Management'],
     whyJoin: 'I want to build full-stack web platforms for E-Cell events, contribute to open-source campus tools, and learn leadership.',
-    previousExperience: 'Built the branch coding club website and participated in Genesis Ideathon 2025.',
+    previousExperience: 'Built the branch coding club website and participated in Campus Ideathon.',
     status: 'pending',
     submittedAt: '2026-08-25'
   },
@@ -2403,8 +2403,8 @@ export const INITIAL_CONTACT_MESSAGES: ContactMessage[] = [
     name: 'Kunal Joshi',
     email: 'kunal.joshi@techcorp.in',
     phone: '+91 98220 11223',
-    subject: 'Corporate Sponsorship Inquiry for E-Summit 2026',
-    message: 'Hello Team Navonmesh, our company would like to explore Title Sponsorship and mentorship booth opportunities for your upcoming E-Summit.',
+    subject: 'Corporate Sponsorship Inquiry for Innovation Conclave',
+    message: 'Hello Team Navonmesh, our company would like to explore Title Sponsorship and mentorship booth opportunities for your upcoming Innovation Conclave.',
     status: 'unread',
     createdAt: '2026-08-27'
   },
@@ -2414,7 +2414,7 @@ export const INITIAL_CONTACT_MESSAGES: ContactMessage[] = [
     email: 'pooja.raut@coep.ac.in',
     phone: '+91 97654 44556',
     subject: 'Inter-College Ideathon Delegation Registration',
-    message: 'We have a contingent of 12 students from COEP Pune wishing to participate in the Genesis Ideathon. Can we get bulk registration assistance?',
+    message: 'We have a contingent of 12 students from COEP Pune wishing to participate in the National Ideathon. Can we get bulk registration assistance?',
     status: 'read',
     createdAt: '2026-08-24'
   }

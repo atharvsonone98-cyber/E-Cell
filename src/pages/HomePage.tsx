@@ -9,11 +9,8 @@ import { EventStoriesShowcase } from '../components/universe/EventStoriesShowcas
 import { MomentOfTheMonth } from '../components/universe/MomentOfTheMonth';
 import { EcellTimeMachine } from '../components/universe/EcellTimeMachine';
 import { InteractiveTeamHierarchy } from '../components/universe/InteractiveTeamHierarchy';
-import { EcellHallOfFame } from '../components/universe/EcellHallOfFame';
 import { FloatingMemoryWall } from '../components/universe/FloatingMemoryWall';
 import { BehindTheEventProcess } from '../components/universe/BehindTheEventProcess';
-import { StudentVoices } from '../components/universe/StudentVoices';
-import { EcellPassport } from '../components/universe/EcellPassport';
 import { EcellNewsroom } from '../components/universe/EcellNewsroom';
 import { ActivityMapTree } from '../components/universe/ActivityMapTree';
 import { EcellCalendarView } from '../components/universe/EcellCalendarView';
@@ -440,18 +437,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenAuth }) =>
       />
 
       {/* CONNECTOR */}
-      <SectionConnector fromLabel="Team Wings" toLabel="Hall of Fame" />
+      <SectionConnector fromLabel="Team Wings" toLabel="Photo Memory Wall" />
 
-      {/* 10. E-CELL HALL OF FAME */}
-      <EcellHallOfFame
-        achievements={achievements}
-        onNavigate={onNavigate}
-      />
-
-      {/* CONNECTOR */}
-      <SectionConnector fromLabel="Honors" toLabel="Photo Memory Wall" />
-
-      {/* 11. FLOATING PHOTOGRAPH MEMORY WALL */}
+      {/* 10. FLOATING PHOTOGRAPH MEMORY WALL */}
       <FloatingMemoryWall
         gallery={gallery}
         onOpenLightbox={setSelectedGalleryItem}
@@ -461,28 +449,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenAuth }) =>
       {/* CONNECTOR */}
       <SectionConnector fromLabel="Memory Vault" toLabel="Execution Workflow" />
 
-      {/* 12. BEHIND THE EVENT (7-Step Process) */}
+      {/* 11. BEHIND THE EVENT (7-Step Process) */}
       <BehindTheEventProcess />
 
       {/* CONNECTOR */}
-      <SectionConnector fromLabel="Process" toLabel="Student Voices" />
+      <SectionConnector fromLabel="Execution Workflow" toLabel="Industry Voices" />
 
-      {/* 13. STUDENT VOICES */}
-      <StudentVoices testimonials={testimonials} />
-
-      {/* CONNECTOR */}
-      <SectionConnector fromLabel="Voices" toLabel="Student Passport" />
-
-      {/* 14. E-CELL STUDENT PASSPORT & DIGITAL STAMPS */}
-      <EcellPassport
-        onOpenAuth={() => onOpenAuth('login')}
-        onNavigate={onNavigate}
-      />
-
-      {/* CONNECTOR */}
-      <SectionConnector fromLabel="Passport" toLabel="Industry Voices" />
-
-      {/* 15. INDUSTRY VOICES / GUEST MENTORS */}
+      {/* 12. INDUSTRY VOICES / GUEST MENTORS */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono font-bold tracking-wider">
@@ -631,7 +604,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenAuth }) =>
               </div>
               <h3 className="text-lg font-bold text-white">Volunteer for Fests</h3>
               <p className="text-xs text-slate-300 leading-relaxed">
-                Help organize E-Summit and Navonmesh Carnivals. Gain on-ground operations experience.
+                Help organize campus hackathons and Navonmesh Carnivals. Gain on-ground operations experience.
               </p>
             </div>
             <button

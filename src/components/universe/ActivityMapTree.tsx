@@ -23,9 +23,9 @@ export const ActivityMapTree: React.FC<ActivityMapTreeProps> = ({ onNavigate }) 
   const branches = {
     events: {
       title: 'EVENTS & COMPETITIONS',
-      desc: 'High-octane hackathons, inter-college pitching arenas, annual E-Summits, and business model simulations.',
+      desc: 'High-octane hackathons, inter-college pitching arenas, innovation conclaves, and business model simulations.',
       nodes: [
-        { label: 'E-Summit SSGMCE', desc: 'Annual flagship symposium bringing industry leaders & campus innovators together.' },
+        { label: 'Campus Innovation Conclave', desc: 'Symposium bringing industry leaders & campus innovators together.' },
         { label: 'Prototyping Hackathons', desc: '24-hour sprint challenges solving real engineering and social problems.' },
         { label: 'Ideathon & Pitch Arena', desc: 'Presenting early concepts to venture scouts and angel evaluators.' },
         { label: 'Trading & Case Battles', desc: 'Financial modeling and market strategy simulations.' }

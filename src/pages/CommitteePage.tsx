@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useEcell } from '../context/EcellContext';
 import { useAuth } from '../context/AuthContext';
 import { CommitteeMember } from '../types';
@@ -27,7 +27,12 @@ import {
   ArrowRight,
   Edit,
   Trash2,
-  UserPlus
+  UserPlus,
+  Table,
+  LayoutGrid,
+  Download,
+  RotateCcw,
+  Plus
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -36,13 +41,32 @@ interface CommitteePageProps {
 }
 
 export const CommitteePage: React.FC<CommitteePageProps> = ({ onNavigate }) => {
-  const { committee, showToast, createCommitteeMember, updateCommitteeMember, deleteCommitteeMember } = useEcell();
+  const { committee, showToast, createCommitteeMember, updateCommitteeMember, deleteCommitteeMember, resetCommittee } = useEcell();
   const { user, isAdmin, addXP } = useAuth();
 
   const [selectedDomain, setSelectedDomain] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedMember, setSelectedMember] = useState<CommitteeMember | null>(null);
   const [isApplyModalOpen, setIsApplyModalOpen] = useState<boolean>(false);
+  const [viewMode, setViewMode] = useState<'grid' | 'table'>('grid');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && (window.location.pathname.includes('join') || window.location.pathname.includes('apply'))) {
+      setIsApplyModalOpen(true);
+    }
+  }, []);
+
+  // Avatar presets for quick picking
+  const AVATAR_PRESETS = [
+    { label: 'Male 1', url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&q=80' },
+    { label: 'Male 2', url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=80' },
+    { label: 'Male 3', url: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&q=80' },
+    { label: 'Male 4', url: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&q=80' },
+    { label: 'Female 1', url: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&q=80' },
+    { label: 'Female 2', url: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&q=80' },
+    { label: 'Female 3', url: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&q=80' },
+    { label: 'Faculty / Prof', url: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&q=80' }
+  ];
 
   // Edit / Add Member Modal State
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -343,6 +367,95 @@ export const CommitteePage: React.FC<CommitteePageProps> = ({ onNavigate }) => {
         </div>
       </div>
 
+      {/* Admin Team Roster Toolbar */}
+      {isAdmin && (
+        <div className="p-4 sm:p-5 rounded-2xl bg-indigo-950/40 border border-indigo-500/30 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-lg backdrop-blur-md">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-indigo-600/30 border border-indigo-400/40 flex items-center justify-center text-indigo-300">
+              <ShieldCheck className="w-5 h-5 text-indigo-400" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-bold text-white uppercase tracking-wider">Admin Team Controls Active</span>
+                <span className="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full font-bold border border-emerald-500/30">
+                  Editable Roster
+                </span>
+              </div>
+              <p className="text-[11px] text-indigo-200/80">
+                You can add, edit, reorder, or delete any council member or faculty advisor in real-time.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2.5">
+            {/* View Mode Toggle */}
+            <div className="flex items-center bg-black/40 p-1 rounded-xl border border-white/10">
+              <button
+                onClick={() => setViewMode('grid')}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                  viewMode === 'grid'
+                    ? 'bg-indigo-600 text-white shadow-md'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                <LayoutGrid className="w-3.5 h-3.5" />
+                <span>Grid</span>
+              </button>
+              <button
+                onClick={() => setViewMode('table')}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                  viewMode === 'table'
+                    ? 'bg-indigo-600 text-white shadow-md'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                <Table className="w-3.5 h-3.5" />
+                <span>Table</span>
+              </button>
+            </div>
+
+            <button
+              onClick={openAddMemberModal}
+              className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-lg shadow-indigo-600/30 transition-all"
+            >
+              <Plus className="w-4 h-4" />
+              <span>+ Add Member</span>
+            </button>
+
+            <button
+              onClick={() => {
+                const jsonString = `data:text/json;charset=utf-8,${encodeURIComponent(
+                  JSON.stringify(committee, null, 2)
+                )}`;
+                const downloadAnchor = document.createElement('a');
+                downloadAnchor.setAttribute('href', jsonString);
+                downloadAnchor.setAttribute('download', 'ecell_ssgmce_committee.json');
+                document.body.appendChild(downloadAnchor);
+                downloadAnchor.click();
+                downloadAnchor.remove();
+                showToast('Exported Team JSON', 'File downloaded successfully', 'info');
+              }}
+              className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 transition-colors"
+              title="Export Team Roster as JSON"
+            >
+              <Download className="w-4 h-4" />
+            </button>
+
+            <button
+              onClick={() => {
+                if (confirm('Reset team roster to official SSGMCE default list?')) {
+                  resetCommittee();
+                }
+              }}
+              className="p-2 rounded-xl bg-white/5 hover:bg-rose-500/20 text-slate-300 hover:text-rose-300 border border-white/10 transition-colors"
+              title="Reset to Default Roster"
+            >
+              <RotateCcw className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Domain Navigation & Search */}
       <div className="space-y-4">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
@@ -374,106 +487,216 @@ export const CommitteePage: React.FC<CommitteePageProps> = ({ onNavigate }) => {
           </div>
         </div>
 
-        {/* Member Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-2">
-          {filteredCommittee.map((member) => (
-            <motion.div
-              key={member.id}
-              layout
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="group p-6 rounded-2xl bg-[#0e1220] border border-white/10 hover:border-indigo-500/40 transition-all flex flex-col justify-between space-y-4 shadow-xl hover:shadow-indigo-500/10"
-            >
-              <div className="space-y-4">
-                <div className="flex items-start gap-4">
-                  <img
-                    src={member.avatar}
-                    alt={member.name}
-                    className="w-16 h-16 rounded-xl object-cover border border-white/10 group-hover:border-indigo-400 transition-colors shrink-0 shadow-md"
-                  />
-                  <div className="min-w-0">
-                    <div className="flex items-center gap-1.5 flex-wrap">
-                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider ${
-                        member.isFaculty 
-                          ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30' 
-                          : member.isLead
-                          ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30'
-                          : 'bg-white/5 text-slate-300 border border-white/10'
-                      }`}>
-                        {member.domain}
-                      </span>
-                      {member.year && (
-                        <span className="text-[10px] text-slate-400 font-medium">{member.year}</span>
-                      )}
+        {/* VIEW 1: TABLE / SPREADSHEET VIEW */}
+        {viewMode === 'table' ? (
+          <div className="rounded-2xl bg-[#0e1220] border border-white/10 overflow-hidden shadow-2xl">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs">
+                <thead className="bg-black/40 border-b border-white/10 text-slate-400 uppercase tracking-wider font-semibold">
+                  <tr>
+                    <th className="py-3.5 px-4">Member</th>
+                    <th className="py-3.5 px-4">Role & Domain</th>
+                    <th className="py-3.5 px-4">Department & Year</th>
+                    <th className="py-3.5 px-4">Contacts</th>
+                    <th className="py-3.5 px-4 text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/5 text-slate-300">
+                  {filteredCommittee.map((member) => (
+                    <tr key={member.id} className="hover:bg-white/[0.02] transition-colors">
+                      <td className="py-3 px-4 flex items-center gap-3">
+                        <img
+                          src={member.avatar}
+                          alt={member.name}
+                          className="w-10 h-10 rounded-xl object-cover border border-white/10 shrink-0"
+                        />
+                        <div>
+                          <div className="font-bold text-white flex items-center gap-1.5">
+                            <span>{member.name}</span>
+                            {member.isLead && (
+                              <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                                LEAD
+                              </span>
+                            )}
+                            {member.isFaculty && (
+                              <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                                FACULTY
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-[11px] text-slate-400 line-clamp-1 max-w-xs">{member.bio}</p>
+                        </div>
+                      </td>
+                      <td className="py-3 px-4">
+                        <span className="font-semibold text-indigo-300 block">{member.role}</span>
+                        <span className="text-[10px] text-slate-400 font-mono">{member.domain}</span>
+                      </td>
+                      <td className="py-3 px-4">
+                        <span className="text-white block">{member.department}</span>
+                        <span className="text-[10px] text-slate-400">{member.year || 'N/A'}</span>
+                      </td>
+                      <td className="py-3 px-4">
+                        <div className="flex items-center gap-2">
+                          {member.email && (
+                            <a href={`mailto:${member.email}`} className="text-slate-400 hover:text-white" title={member.email}>
+                              <Mail className="w-3.5 h-3.5" />
+                            </a>
+                          )}
+                          {member.linkedin && (
+                            <a href={member.linkedin} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-indigo-400">
+                              <Linkedin className="w-3.5 h-3.5" />
+                            </a>
+                          )}
+                          {member.github && (
+                            <a href={member.github} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white">
+                              <Github className="w-3.5 h-3.5" />
+                            </a>
+                          )}
+                        </div>
+                      </td>
+                      <td className="py-3 px-4 text-right">
+                        <div className="flex items-center justify-end gap-2">
+                          <button
+                            onClick={() => openEditMemberModal(member)}
+                            className="px-2.5 py-1.5 rounded-lg bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 font-semibold flex items-center gap-1 border border-indigo-500/30 transition-colors"
+                          >
+                            <Edit className="w-3 h-3" />
+                            <span>Edit</span>
+                          </button>
+                          <button
+                            onClick={() => {
+                              if (confirm(`Remove ${member.name} from committee?`)) {
+                                deleteCommitteeMember(member.id);
+                              }
+                            }}
+                            className="p-1.5 rounded-lg bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 transition-colors"
+                            title="Delete Member"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        ) : (
+          /* VIEW 2: CARD GRID VIEW */
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-2">
+            {filteredCommittee.map((member) => (
+              <motion.div
+                key={member.id}
+                layout
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="group p-6 rounded-2xl bg-[#0e1220] border border-white/10 hover:border-indigo-500/40 transition-all flex flex-col justify-between space-y-4 shadow-xl hover:shadow-indigo-500/10"
+              >
+                <div className="space-y-4">
+                  <div className="flex items-start gap-4">
+                    <img
+                      src={member.avatar}
+                      alt={member.name}
+                      className="w-16 h-16 rounded-xl object-cover border border-white/10 group-hover:border-indigo-400 transition-colors shrink-0 shadow-md"
+                    />
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider ${
+                          member.isFaculty 
+                            ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30' 
+                            : member.isLead
+                            ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30'
+                            : 'bg-white/5 text-slate-300 border border-white/10'
+                        }`}>
+                          {member.domain}
+                        </span>
+                        {member.year && (
+                          <span className="text-[10px] text-slate-400 font-medium">{member.year}</span>
+                        )}
+                      </div>
+                      <h3 className="text-base font-bold text-white mt-1 truncate">{member.name}</h3>
+                      <p className="text-xs text-indigo-300 font-semibold line-clamp-1">{member.role}</p>
+                      <p className="text-[11px] text-slate-400 mt-0.5 truncate">{member.department}</p>
                     </div>
-                    <h3 className="text-base font-bold text-white mt-1 truncate">{member.name}</h3>
-                    <p className="text-xs text-indigo-300 font-semibold line-clamp-1">{member.role}</p>
-                    <p className="text-[11px] text-slate-400 mt-0.5 truncate">{member.department}</p>
                   </div>
+
+                  <p className="text-xs text-slate-300 leading-relaxed line-clamp-3">
+                    {member.bio}
+                  </p>
+
+                  {member.tags && member.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5">
+                      {member.tags.map((t, idx) => (
+                        <span key={idx} className="text-[10px] px-2 py-0.5 rounded bg-white/5 text-slate-400 font-medium">
+                          #{t}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
-                <p className="text-xs text-slate-300 leading-relaxed line-clamp-3">
-                  {member.bio}
-                </p>
-
-                {member.tags && member.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-1.5">
-                    {member.tags.map((t, idx) => (
-                      <span key={idx} className="text-[10px] px-2 py-0.5 rounded bg-white/5 text-slate-400 font-medium">
-                        #{t}
-                      </span>
-                    ))}
+                {/* Card Footer Connects */}
+                <div className="pt-3 border-t border-white/5 flex items-center justify-between text-xs gap-2">
+                  <span className="text-[11px] text-slate-400 font-medium truncate">SSGMCE Shegaon</span>
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    {member.email && (
+                      <a
+                        href={`mailto:${member.email}`}
+                        className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors"
+                        title={member.email}
+                      >
+                        <Mail className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                    {member.linkedin && (
+                      <a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-indigo-400 transition-colors"
+                      >
+                        <Linkedin className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                    {member.github && (
+                      <a
+                        href={member.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors"
+                      >
+                        <Github className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                    {isAdmin && (
+                      <div className="flex items-center gap-1 ml-1">
+                        <button
+                          onClick={() => openEditMemberModal(member)}
+                          className="p-1.5 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-300 hover:text-white transition-colors"
+                          title="Edit Member Profile & Role"
+                        >
+                          <Edit className="w-3.5 h-3.5" />
+                        </button>
+                        <button
+                          onClick={() => {
+                            if (confirm(`Are you sure you want to remove ${member.name}?`)) {
+                              deleteCommitteeMember(member.id);
+                            }
+                          }}
+                          className="p-1.5 rounded-lg bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 transition-colors"
+                          title="Delete Member"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-
-              {/* Card Footer Connects */}
-              <div className="pt-3 border-t border-white/5 flex items-center justify-between text-xs gap-2">
-                <span className="text-[11px] text-slate-400 font-medium truncate">SSGMCE Shegaon</span>
-                <div className="flex items-center gap-1.5 shrink-0">
-                  {member.email && (
-                    <a
-                      href={`mailto:${member.email}`}
-                      className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors"
-                      title={member.email}
-                    >
-                      <Mail className="w-3.5 h-3.5" />
-                    </a>
-                  )}
-                  {member.linkedin && (
-                    <a
-                      href={member.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-indigo-400 transition-colors"
-                    >
-                      <Linkedin className="w-3.5 h-3.5" />
-                    </a>
-                  )}
-                  {member.github && (
-                    <a
-                      href={member.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors"
-                    >
-                      <Github className="w-3.5 h-3.5" />
-                    </a>
-                  )}
-                  {isAdmin && (
-                    <button
-                      onClick={() => openEditMemberModal(member)}
-                      className="p-1.5 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-300 hover:text-white transition-colors ml-1"
-                      title="Edit Member Profile & Role"
-                    >
-                      <Edit className="w-3.5 h-3.5" />
-                    </button>
-                  )}
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Domain Wings Organizational Structure */}
@@ -792,13 +1015,38 @@ export const CommitteePage: React.FC<CommitteePageProps> = ({ onNavigate }) => {
                   </div>
                   <div>
                     <label className="block text-xs font-bold text-slate-300 mb-1">Avatar / Photo URL</label>
-                    <input
-                      type="text"
-                      value={memberForm.avatar}
-                      onChange={e => setMemberForm({ ...memberForm, avatar: e.target.value })}
-                      placeholder="https://images.unsplash.com/..."
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white text-xs placeholder-slate-500 focus:outline-none focus:border-indigo-500"
-                    />
+                    <div className="flex items-center gap-2">
+                      <img
+                        src={memberForm.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&q=80'}
+                        alt="Preview"
+                        className="w-9 h-9 rounded-xl object-cover border border-white/15 shrink-0"
+                      />
+                      <input
+                        type="text"
+                        value={memberForm.avatar}
+                        onChange={e => setMemberForm({ ...memberForm, avatar: e.target.value })}
+                        placeholder="https://images.unsplash.com/..."
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white text-xs placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Quick Avatar Presets */}
+                <div className="space-y-1.5 bg-white/[0.02] p-3 rounded-xl border border-white/5">
+                  <span className="text-[11px] font-bold text-slate-400 block">Quick Photo Presets:</span>
+                  <div className="flex flex-wrap gap-2">
+                    {AVATAR_PRESETS.map((preset, idx) => (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={() => setMemberForm({ ...memberForm, avatar: preset.url })}
+                        className="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-white/5 hover:bg-indigo-600/30 text-[11px] text-slate-300 hover:text-white border border-white/10 transition-colors"
+                      >
+                        <img src={preset.url} alt={preset.label} className="w-4 h-4 rounded-full object-cover" />
+                        <span>{preset.label}</span>
+                      </button>
+                    ))}
                   </div>
                 </div>
 

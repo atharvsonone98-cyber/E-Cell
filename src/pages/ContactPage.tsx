@@ -186,7 +186,7 @@ export const ContactPage: React.FC = () => {
                     required
                     value={subject}
                     onChange={e => setSubject(e.target.value)}
-                    placeholder="e.g. Sponsoring E-Summit '26"
+                    placeholder="e.g. Sponsoring Campus Innovation Conclave"
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white text-sm focus:outline-none focus:border-blue-500"
                   />
                 </div>

@@ -105,6 +105,8 @@ interface EcellContextType {
   createCommitteeMember: (data: Omit<CommitteeMember, 'id'>) => Promise<boolean>;
   updateCommitteeMember: (id: string, updates: Partial<CommitteeMember>) => Promise<boolean>;
   deleteCommitteeMember: (id: string) => Promise<boolean>;
+  resetCommittee: () => void;
+  reorderCommittee?: (startIndex: number, endIndex: number) => void;
   createAnnouncement: (data: Omit<AnnouncementItem, 'id'>) => Promise<boolean>;
   deleteAnnouncement: (id: string) => Promise<boolean>;
   createGalleryItem: (data: Omit<GalleryItem, 'id'>) => Promise<boolean>;
@@ -134,7 +136,27 @@ export const EcellProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [mentors, setMentors] = useState<MentorItem[]>(INITIAL_MENTORS);
   const [pitches, setPitches] = useState<PitchItem[]>(INITIAL_PITCHES);
   const [certificates, setCertificates] = useState<CertificateItem[]>(INITIAL_CERTIFICATES);
-  const [committee, setCommittee] = useState<CommitteeMember[]>(INITIAL_COMMITTEE);
+  const [committee, setCommittee] = useState<CommitteeMember[]>(() => {
+    const saved = localStorage.getItem('ecell_committee_data');
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      } catch (e) {
+        return INITIAL_COMMITTEE;
+      }
+    }
+    return INITIAL_COMMITTEE;
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('ecell_committee_data', JSON.stringify(committee));
+    } catch (e) {
+      console.warn('Failed to persist committee data to localStorage', e);
+    }
+  }, [committee]);
+
   const [gallery, setGallery] = useState<GalleryItem[]>(INITIAL_GALLERY);
   const [achievements, setAchievements] = useState<AchievementItem[]>(INITIAL_ACHIEVEMENTS);
   const [initiatives, setInitiatives] = useState<InitiativeItem[]>(INITIAL_INITIATIVES);
@@ -577,7 +599,7 @@ export const EcellProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       userName: data.userName || user?.name || 'Aarav Sharma',
       userEmail: data.userEmail || user?.email || 'student@college.edu',
       collegeId: data.collegeId || user?.collegeId || '2023CS0142',
-      eventName: data.eventName || 'National E-Summit 2026',
+      eventName: data.eventName || 'Campus Innovation Conclave',
       issueDate: new Date().toISOString().split('T')[0],
       category: data.category || 'Certificate of Participation & Achievement',
       rank: data.rank || 'Honorable Mention',
@@ -626,6 +648,21 @@ export const EcellProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     setCommittee(prev => prev.filter(m => m.id !== id));
     showToast('Member Removed', member ? `${member.name} removed from committee` : 'Member deleted', 'info');
     return true;
+  };
+
+  const resetCommittee = () => {
+    setCommittee(INITIAL_COMMITTEE);
+    localStorage.removeItem('ecell_committee_data');
+    showToast('Team Roster Reset', 'Restored official default committee list', 'info');
+  };
+
+  const reorderCommittee = (startIndex: number, endIndex: number) => {
+    setCommittee(prev => {
+      const result = Array.from(prev);
+      const [removed] = result.splice(startIndex, 1);
+      result.splice(endIndex, 0, removed);
+      return result;
+    });
   };
 
   // 9. Additional CMS Management
@@ -800,6 +837,8 @@ export const EcellProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         createCommitteeMember,
         updateCommitteeMember,
         deleteCommitteeMember,
+        resetCommittee,
+        reorderCommittee,
         createAnnouncement,
         deleteAnnouncement,
         createGalleryItem,

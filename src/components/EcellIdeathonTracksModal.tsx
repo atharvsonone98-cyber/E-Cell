@@ -42,7 +42,7 @@ interface ProblemStatement {
 export const ECELL_PROBLEM_STATEMENTS: ProblemStatement[] = [
   {
     id: 'ECELL-AI-01',
-    track: 'GENESIS Track 1 — AI & Enterprise SaaS',
+    track: 'Ideathon Track 1 — AI & Enterprise SaaS',
     category: 'AI & SaaS',
     title: 'Autonomous Multi-Agent Workflow Engine for Small Businesses',
     difficulty: 'Advanced',
@@ -57,7 +57,7 @@ export const ECELL_PROBLEM_STATEMENTS: ProblemStatement[] = [
   },
   {
     id: 'ECELL-AGRI-02',
-    track: 'GENESIS Track 2 — AgriTech & Rural Commerce',
+    track: 'Ideathon Track 2 — AgriTech & Rural Commerce',
     category: 'AgriTech & Rural',
     title: 'Mandi Price Arbitrage & Dynamic Cold-Storage Telemetry',
     difficulty: 'Intermediate',
@@ -72,7 +72,7 @@ export const ECELL_PROBLEM_STATEMENTS: ProblemStatement[] = [
   },
   {
     id: 'ECELL-CLEAN-03',
-    track: 'GENESIS Track 3 — CleanTech & EV Mobility',
+    track: 'Ideathon Track 3 — CleanTech & EV Mobility',
     category: 'CleanTech & Energy',
     title: 'Predictive Battery Health & Smart Swapping Fleet Orchestrator',
     difficulty: 'Advanced',
@@ -87,7 +87,7 @@ export const ECELL_PROBLEM_STATEMENTS: ProblemStatement[] = [
   },
   {
     id: 'ECELL-FIN-04',
-    track: 'GENESIS Track 4 — FinTech & Social Commerce',
+    track: 'Ideathon Track 4 — FinTech & Social Commerce',
     category: 'FinTech & Commerce',
     title: 'Alternative Micro-Credit Scoring for Rural Artisans & Merchants',
     difficulty: 'Intermediate',
@@ -102,7 +102,7 @@ export const ECELL_PROBLEM_STATEMENTS: ProblemStatement[] = [
   },
   {
     id: 'ECELL-HEALTH-05',
-    track: 'GENESIS Track 5 — Healthcare & BioTech',
+    track: 'Ideathon Track 5 — Healthcare & BioTech',
     category: 'Healthcare & BioTech',
     title: 'Rural Tele-Triage & AI Audio Symptom Interpreter',
     difficulty: 'Advanced',
@@ -117,7 +117,7 @@ export const ECELL_PROBLEM_STATEMENTS: ProblemStatement[] = [
   },
   {
     id: 'ECELL-OPEN-06',
-    track: 'GENESIS Open Track — Wildcard Innovation',
+    track: 'Ideathon Open Track — Wildcard Innovation',
     category: 'Open Innovation',
     title: 'Breakthrough Solutions in EdTech, CyberSec & Sustainable Tech',
     difficulty: 'All Levels',
@@ -157,15 +157,15 @@ export const EcellIdeathonTracksModal: React.FC<EcellIdeathonTracksModalProps> =
   const handleDownloadHandbook = () => {
     addXP(20);
     showToast(
-      'Genesis Handbook Downloaded!',
-      'E-Cell SSGMCE Genesis Ideathon & Challenge Tracks Handbook saved. (+20 XP)',
+      'Ideathon Handbook Downloaded!',
+      'E-Cell SSGMCE Ideathon & Challenge Tracks Handbook saved. (+20 XP)',
       'success'
     );
-    const content = `==========================================================\nGENESIS '26 — NATIONAL IDEATHON & B-PLAN CHALLENGE\nEntrepreneurship Cell (E-Cell) SSGMCE Shegaon\n==========================================================\n\nTRACKS & PROBLEM STATEMENTS:\n1. AI & Enterprise SaaS (Autonomous Multi-Agent Workflow Engine)\n2. AgriTech & Rural Commerce (Mandi Price Arbitrage & Cold-Storage)\n3. CleanTech & EV Mobility (Battery State of Health & Swapping)\n4. FinTech & Commerce (Alternative Micro-Credit Scoring)\n5. Healthcare & BioTech (Rural Tele-Triage & Clinical AI)\n6. Open Innovation Wildcard (EdTech, CyberSec, Sustainability)\n\nPRIZES & PERKS:\n- ₹50,000+ Total Cash Pool across Tracks\n- 6-Month Pre-Incubation at SSGMCE Innovation Center\n- $1,500 AWS / GCP Compute Credits per Team\n- Direct pitch to Angel Syndicates\n\nTEAM GUIDELINES:\n- Team Size: 1 to 4 members\n- Open to all engineering & management students\n\nContact: atharvsonone98@gmail.com | ecell@ssgmce.ac.in\n==========================================================`;
+    const content = `==========================================================\nCAMPUS IDEATHON & B-PLAN CHALLENGE\nEntrepreneurship Cell (E-Cell) SSGMCE Shegaon\n==========================================================\n\nTRACKS & PROBLEM STATEMENTS:\n1. AI & Enterprise SaaS (Autonomous Multi-Agent Workflow Engine)\n2. AgriTech & Rural Commerce (Mandi Price Arbitrage & Cold-Storage)\n3. CleanTech & EV Mobility (Battery State of Health & Swapping)\n4. FinTech & Commerce (Alternative Micro-Credit Scoring)\n5. Healthcare & BioTech (Rural Tele-Triage & Clinical AI)\n6. Open Innovation Wildcard (EdTech, CyberSec, Sustainability)\n\nPRIZES & PERKS:\n- ₹50,000+ Total Cash Pool across Tracks\n- 6-Month Pre-Incubation at SSGMCE Innovation Center\n- $1,500 AWS / GCP Compute Credits per Team\n- Direct pitch to Angel Syndicates\n\nTEAM GUIDELINES:\n- Team Size: 1 to 4 members\n- Open to all engineering & management students\n\nContact: atharvsonone98@gmail.com | ecell@ssgmce.ac.in\n==========================================================`;
     const element = document.createElement('a');
     const file = new Blob([content], { type: 'text/plain' });
     element.href = URL.createObjectURL(file);
-    element.download = 'GENESIS_2026_Ideathon_Handbook_SSGMCE.txt';
+    element.download = 'Ideathon_Challenge_Handbook_SSGMCE.txt';
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
@@ -185,7 +185,7 @@ export const EcellIdeathonTracksModal: React.FC<EcellIdeathonTracksModalProps> =
             <div className="space-y-1">
               <div className="flex items-center gap-2">
                 <span className="px-2.5 py-0.5 rounded-full bg-indigo-500/20 border border-indigo-500/30 text-indigo-300 text-[10px] font-bold uppercase tracking-wider">
-                  GENESIS '26 • E-CELL SSGMCE
+                  E-CELL IDEATHON • SSGMCE
                 </span>
                 <span className="px-2.5 py-0.5 rounded-full bg-amber-500/20 border border-amber-500/30 text-amber-300 text-[10px] font-bold">
                   ₹50,000+ Prize Pool & Incubation

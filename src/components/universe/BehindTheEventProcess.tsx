@@ -125,7 +125,7 @@ export const BehindTheEventProcess: React.FC = () => {
       desc: 'Publishing post-event recap stories, issuing digital certificates, archiving event photos, and gathering participant feedback.',
       details: [
         'Archiving high-resolution photographs in the official gallery.',
-        'Distributing verifiable certificates directly to student passports.',
+        'Distributing verifiable certificates directly to student credentials and digital registry.',
         'Internal committee post-mortem meeting to elevate next year.'
       ]
     }

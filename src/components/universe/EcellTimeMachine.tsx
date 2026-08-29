@@ -40,8 +40,8 @@ export const EcellTimeMachine: React.FC<EcellTimeMachineProps> = ({
   // Year theme descriptors
   const yearMetadata: Record<TimelineYear, { theme: string; summary: string; badge: string }> = {
     '2026': {
-      theme: 'Venture Incubation & Flagship Summits',
-      summary: 'Conducting E-Summit 26, technical hackathons, and state-level prototyping incubation.',
+      theme: 'Innovation Pods & Founder Accelerators',
+      summary: 'Conducting Startup Launchpad Bootcamps, inter-college hackathons, and state-level prototyping cohorts.',
       badge: 'Current Era'
     },
     '2025': {

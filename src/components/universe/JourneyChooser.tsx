@@ -11,7 +11,7 @@ export const JourneyChooser: React.FC<JourneyChooserProps> = ({ onNavigate }) =>
     {
       id: 'events',
       title: 'EXPLORE EVENTS',
-      subtitle: 'Workshops, hackathons & summits',
+      subtitle: 'Workshops, hackathons & bootcamps',
       desc: 'Discover upcoming competitions, keynote masterclasses, and hands-on technical bootcamps.',
       icon: Calendar,
       path: '/events',
@@ -54,7 +54,7 @@ export const JourneyChooser: React.FC<JourneyChooserProps> = ({ onNavigate }) =>
       color: 'text-amber-400',
       borderColor: 'border-amber-500/30 hover:border-amber-400',
       bgGradient: 'from-amber-500/10 to-yellow-600/5',
-      badge: 'Hall of Fame'
+      badge: 'National Honors'
     }
   ];
 

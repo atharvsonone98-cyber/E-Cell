@@ -19,7 +19,7 @@ const NODES: StageNode[] = [
   { id: 'mentor', name: 'MENTOR', subtitle: 'Venture Guidance', icon: Compass, color: 'text-indigo-400', bgGlow: 'rgba(129, 140, 248, 0.25)', description: '1-on-1 weekly tactical reviews with YC alumni, venture partners, and product leaders.' },
   { id: 'mvp', name: 'MVP', subtitle: 'Rapid Prototype', icon: Code, color: 'text-violet-400', bgGlow: 'rgba(167, 139, 250, 0.25)', description: 'Ship an atomic functional product in 14 days using full-stack frameworks and AI.' },
   { id: 'pitch', name: 'PITCH', subtitle: 'Arena & Demo', icon: Mic2, color: 'text-fuchsia-400', bgGlow: 'rgba(232, 121, 249, 0.25)', description: 'Refine 3-minute investor pitch decks and practice tough Q&A objection teardowns.' },
-  { id: 'comp', name: 'COMPETITION', subtitle: 'Genesis Hackathons', icon: Trophy, color: 'text-yellow-400', bgGlow: 'rgba(250, 204, 21, 0.25)', description: 'Compete in national collegiate pitch battles with ₹10L+ in non-dilutive grant pools.' },
+  { id: 'comp', name: 'COMPETITION', subtitle: 'Pitch & Hackathons', icon: Trophy, color: 'text-yellow-400', bgGlow: 'rgba(250, 204, 21, 0.25)', description: 'Compete in national collegiate pitch battles with ₹10L+ in non-dilutive grant pools.' },
   { id: 'funding', name: 'FUNDING', subtitle: 'Angel Syndicates', icon: DollarSign, color: 'text-emerald-400', bgGlow: 'rgba(52, 211, 153, 0.25)', description: 'Facilitate direct seed investments, DST/NIDHI government grants, and SAFE notes.' },
   { id: 'startup', name: 'STARTUP', subtitle: 'Incubation & Scale', icon: Rocket, color: 'text-rose-400', bgGlow: 'rgba(251, 113, 133, 0.25)', description: 'Incorporate as an official DPIIT-recognized venture with campus incubator office space.' }
 ];

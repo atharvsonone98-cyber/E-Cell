@@ -35,7 +35,7 @@ const ECOSYSTEM_NODES: NetworkNode[] = [
   {
     id: 'ideas',
     label: 'IDEAS',
-    subtitle: 'Genesis & Problem Finding',
+    subtitle: 'Discovery & Problem Finding',
     quote: 'Where every journey begins.',
     icon: Lightbulb,
     color: 'text-amber-400',
@@ -65,7 +65,7 @@ const ECOSYSTEM_NODES: NetworkNode[] = [
   {
     id: 'events',
     label: 'EVENTS',
-    subtitle: 'Hackathons & Summits',
+    subtitle: 'Hackathons & Workshops',
     quote: 'Experiences that bring students together.',
     icon: Calendar,
     color: 'text-emerald-400',

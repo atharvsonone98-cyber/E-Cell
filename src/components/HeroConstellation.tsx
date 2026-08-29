@@ -29,7 +29,7 @@ const NODES: ConstellationNode[] = [
   {
     id: 'ideas',
     label: 'IDEAS',
-    subtitle: 'Genesis & Problem Finding',
+    subtitle: 'Discovery & Problem Finding',
     quote: 'Where every journey begins.',
     icon: Lightbulb,
     color: 'text-sky-300',
@@ -43,7 +43,7 @@ const NODES: ConstellationNode[] = [
   {
     id: 'events',
     label: 'EVENTS',
-    subtitle: 'Summits & Hackathons',
+    subtitle: 'Workshops & Hackathons',
     quote: 'Experiences that bring students together.',
     icon: Calendar,
     color: 'text-indigo-300',
