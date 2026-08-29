@@ -26,11 +26,19 @@ import {
 import { motion, AnimatePresence } from 'motion/react';
 
 import { EcellLogo } from './EcellLogo';
+import { EcellBrandLogo } from './EcellBrandLogo';
 
 interface NavbarProps {
   currentPath: string;
   onNavigate: (path: string) => void;
   onOpenAuth: (mode: 'login' | 'register') => void;
+}
+
+interface NavLinkItem {
+  label: string;
+  path: string;
+  icon?: React.ElementType;
+  highlight?: boolean;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate, onOpenAuth }) => {
@@ -53,31 +61,26 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate, onOpenA
 
   const unreadNotifications = notifications.filter(n => !n.read);
 
-  const publicNavLinks = [
-    { label: 'Home', path: '/', icon: Rocket },
-    { label: 'About', path: '/about', icon: ShieldCheck },
-    { label: 'Team', path: '/committee', icon: Users },
-    { label: 'Initiatives', path: '/initiatives', icon: Sparkles },
-    { label: 'Events', path: '/events', icon: Calendar },
-    { label: 'Gallery', path: '/gallery', icon: Award },
-    { label: 'Achievements', path: '/achievements', icon: Trophy },
-    { label: 'Mentors', path: '/mentors', icon: Compass },
-    { label: 'Startups', path: '/startups', icon: Rocket },
-    { label: 'Contact', path: '/contact', icon: Mail },
-    { label: 'E-CELL AI', path: '/ai-assistant', icon: Sparkles, highlight: true }
+  const publicNavLinks: NavLinkItem[] = [
+    { label: 'HOME', path: '/', icon: Rocket },
+    { label: 'ABOUT', path: '/about', icon: ShieldCheck },
+    { label: 'TEAM', path: '/committee', icon: Users },
+    { label: 'EVENTS', path: '/events', icon: Calendar },
+    { label: 'INITIATIVES', path: '/initiatives', icon: Sparkles },
+    { label: 'ACHIEVEMENTS', path: '/achievements', icon: Trophy },
+    { label: 'GALLERY', path: '/gallery', icon: Award },
+    { label: 'CONTACT', path: '/contact', icon: Mail }
   ];
 
-  const authNavLinks = [
-    { label: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
-    { label: 'Events', path: '/events', icon: Calendar },
-    { label: 'Team', path: '/committee', icon: Users },
-    { label: 'Initiatives', path: '/initiatives', icon: Sparkles },
-    { label: 'Startups', path: '/startups', icon: Rocket },
-    { label: 'Mentors', path: '/mentors', icon: Compass },
-    { label: 'Gallery', path: '/gallery', icon: Award },
-    { label: 'Co-Founders', path: '/co-founders', icon: Users },
-    { label: 'Certificates', path: '/certificates', icon: ShieldCheck },
-    { label: 'E-CELL AI', path: '/ai-assistant', icon: Sparkles, highlight: true }
+  const authNavLinks: NavLinkItem[] = [
+    { label: 'HOME', path: '/', icon: Rocket },
+    { label: 'DASHBOARD', path: '/dashboard', icon: LayoutDashboard },
+    { label: 'EVENTS', path: '/events', icon: Calendar },
+    { label: 'TEAM', path: '/committee', icon: Users },
+    { label: 'INITIATIVES', path: '/initiatives', icon: Sparkles },
+    { label: 'ACHIEVEMENTS', path: '/achievements', icon: Trophy },
+    { label: 'STARTUPS', path: '/startups', icon: Rocket },
+    { label: 'GALLERY', path: '/gallery', icon: Award }
   ];
 
   const navLinks = user ? authNavLinks : publicNavLinks;
@@ -94,56 +97,39 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate, onOpenA
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? 'bg-black/80 backdrop-blur-xl border-b border-white/10 shadow-2xl py-3'
-            : 'bg-black/40 backdrop-blur-md border-b border-white/5 py-4'
+            ? 'bg-[#030712]/90 backdrop-blur-xl border-b border-white/10 shadow-2xl py-3'
+            : 'bg-transparent py-4'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
-          {/* Logo with interactive animated rocket emblem */}
+          {/* Official Ecell Brand Logo */}
           <button
             onClick={() => handleNavClick('/')}
-            className="flex items-center gap-2.5 group text-left focus:outline-none shrink-0"
+            className="flex items-center group text-left focus:outline-none shrink-0"
           >
-            <div className="relative">
-              <EcellLogo
-                size={38}
-                variant="glow"
-                animated={true}
-                interactive={true}
-                showText={false}
-                className="group-hover:scale-110 transition-transform"
-              />
-            </div>
-            <div className="flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-2">
-              <span className="text-lg sm:text-xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-100 to-indigo-200">
-                E-Cell SSGMCE
-              </span>
-              <span className="hidden md:inline-block text-[9px] font-bold text-indigo-300 bg-indigo-500/15 border border-indigo-500/30 px-1.5 py-0.5 rounded uppercase tracking-wider">
-                Shegaon
-              </span>
-            </div>
+            <EcellBrandLogo />
           </button>
 
           {/* Desktop Center Navigation */}
-          <nav className="hidden lg:flex items-center gap-5 text-sm font-medium text-gray-400">
-            {navLinks.slice(0, user ? 8 : 9).map((link) => {
+          <nav className="hidden lg:flex items-center gap-7 text-xs font-bold tracking-wider text-gray-300">
+            {navLinks.map((link) => {
               const isActive = currentPath === link.path;
               return (
                 <button
                   key={link.path}
                   onClick={() => handleNavClick(link.path)}
-                  className={`relative py-1 transition-colors duration-200 ${
+                  className={`relative py-1 transition-all duration-200 uppercase ${
                     isActive
-                      ? 'text-white font-semibold'
-                      : 'text-gray-400 hover:text-white'
-                  } ${link.highlight ? 'text-indigo-400 font-semibold' : ''}`}
+                      ? 'text-white font-black'
+                      : 'text-slate-300 hover:text-white'
+                  }`}
                 >
                   {link.label}
                   {isActive && (
-                    <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-indigo-500 rounded-full" />
-                  )}
-                  {link.highlight && !isActive && (
-                    <span className="absolute -top-1 -right-1.5 w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
+                    <motion.span 
+                      layoutId="activeNavIndicator"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-500 rounded-full shadow-[0_0_8px_#818cf8]" 
+                    />
                   )}
                 </button>
               );
@@ -155,10 +141,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate, onOpenA
             {/* Search Trigger */}
             <button
               onClick={() => setCommandPaletteOpen(true)}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 text-gray-300 hover:text-white text-xs transition-all"
+              className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 text-gray-300 hover:text-white text-xs transition-all"
               title="Search (Ctrl + K)"
             >
-              <Search className="w-3.5 h-3.5 text-indigo-400" />
+              <Search className="w-3.5 h-3.5 text-sky-400" />
               <span className="hidden xl:inline text-[11px] text-gray-400">Search</span>
               <kbd className="hidden sm:inline-block text-[9px] bg-white/10 text-gray-300 px-1.5 py-0.5 rounded border border-white/10">
                 ⌘K
@@ -359,15 +345,15 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate, onOpenA
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => onOpenAuth('login')}
-                  className="px-5 py-2 text-sm border border-white/10 rounded-full hover:bg-white/5 text-gray-200 hover:text-white transition-colors"
+                  className="px-5 py-2 text-xs font-bold tracking-wider uppercase border border-white/20 rounded-xl hover:bg-white/10 text-white transition-all bg-black/40"
                 >
-                  Login
+                  LOGIN
                 </button>
                 <button
                   onClick={() => onOpenAuth('register')}
-                  className="px-5 py-2 text-sm bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-colors shadow-lg shadow-white/5"
+                  className="px-5 py-2 text-xs font-bold tracking-wider uppercase bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-xl transition-all shadow-lg shadow-purple-900/30 hover:scale-[1.02]"
                 >
-                  Join Ecosystem
+                  JOIN E-CELL
                 </button>
               </div>
             )}

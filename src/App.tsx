@@ -6,6 +6,7 @@ import { Footer } from './components/Footer';
 import { CommandPalette } from './components/CommandPalette';
 import { ToastContainer } from './components/ToastContainer';
 import { AuthModal } from './components/AuthModal';
+import { PremiumBackgroundSystem } from './components/background/PremiumBackgroundSystem';
 
 import { HomePage } from './pages/HomePage';
 import { StartupsPage } from './pages/StartupsPage';
@@ -118,10 +119,17 @@ function AppContent() {
 
   return (
     <div className="min-h-screen bg-[#030712] text-[#F8FAFC] font-sans selection:bg-blue-600 selection:text-white flex flex-col justify-between relative overflow-x-hidden">
-      {/* Ambient background glows */}
-      <div className="fixed top-[-100px] right-[-100px] w-[500px] h-[500px] bg-blue-600/10 blur-[120px] rounded-full pointer-events-none -z-10" />
-      <div className="fixed bottom-[-100px] left-[-100px] w-[400px] h-[400px] bg-indigo-600/10 blur-[120px] rounded-full pointer-events-none -z-10" />
-      <div className="fixed inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none -z-10" />
+      {/* Living Multi-Layer Premium Background Engine */}
+      <PremiumBackgroundSystem currentPath={currentPath} />
+
+      {/* Subtle Global Atmospheric Gradient Overlay: Enhances text readability and section transitions while keeping background animations vivid */}
+      <div 
+        className="fixed inset-0 pointer-events-none z-[1] select-none"
+        style={{
+          background: 'radial-gradient(ellipse 100% 60% at 50% -10%, rgba(56, 189, 248, 0.06) 0%, transparent 60%), radial-gradient(ellipse 70% 50% at 90% 50%, rgba(129, 140, 248, 0.04) 0%, transparent 70%), linear-gradient(180deg, rgba(3, 7, 18, 0.35) 0%, rgba(3, 7, 18, 0.12) 15%, rgba(3, 7, 18, 0.2) 50%, rgba(3, 7, 18, 0.38) 85%, rgba(3, 7, 18, 0.78) 100%)'
+        }}
+        aria-hidden="true"
+      />
 
       {/* Global Navigation */}
       <Navbar
@@ -131,7 +139,7 @@ function AppContent() {
       />
 
       {/* Main View Container */}
-      <main className="flex-1 w-full pt-20">
+      <main className="flex-1 w-full pt-20 relative z-10">
         {renderPage()}
       </main>
 
