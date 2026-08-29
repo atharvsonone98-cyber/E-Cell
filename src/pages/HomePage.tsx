@@ -11,6 +11,8 @@ import { EcellTimeMachine } from '../components/universe/EcellTimeMachine';
 import { InteractiveTeamHierarchy } from '../components/universe/InteractiveTeamHierarchy';
 import { FloatingMemoryWall } from '../components/universe/FloatingMemoryWall';
 import { BehindTheEventProcess } from '../components/universe/BehindTheEventProcess';
+import { HallOfFameSection } from '../components/universe/HallOfFameSection';
+import { StudentVoicesSection } from '../components/universe/StudentVoicesSection';
 import { EcellNewsroom } from '../components/universe/EcellNewsroom';
 import { ActivityMapTree } from '../components/universe/ActivityMapTree';
 import { EcellCalendarView } from '../components/universe/EcellCalendarView';
@@ -511,7 +513,25 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenAuth }) =>
       </section>
 
       {/* CONNECTOR */}
-      <SectionConnector fromLabel="Mentors" toLabel="Newsroom" />
+      <SectionConnector fromLabel="Mentors" toLabel="Hall of Fame" />
+
+      {/* 13. E-CELL HALL OF FAME */}
+      <HallOfFameSection
+        achievements={achievements}
+        onNavigate={onNavigate}
+      />
+
+      {/* CONNECTOR */}
+      <SectionConnector fromLabel="Hall of Fame" toLabel="Student Voices" />
+
+      {/* 14. STUDENT VOICES */}
+      <StudentVoicesSection
+        testimonials={testimonials}
+        onNavigate={onNavigate}
+      />
+
+      {/* CONNECTOR */}
+      <SectionConnector fromLabel="Student Voices" toLabel="Newsroom" />
 
       {/* 16. E-CELL NEWSROOM */}
       <EcellNewsroom

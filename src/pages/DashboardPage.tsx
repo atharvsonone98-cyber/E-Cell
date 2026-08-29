@@ -19,13 +19,14 @@ import {
 } from 'lucide-react';
 import { CertificateModal } from '../components/CertificateModal';
 import { StartupSubmitModal } from '../components/StartupSubmitModal';
+import { EcellPassportCard } from '../components/universe/EcellPassportCard';
 import { CertificateItem } from '../types';
 
 export const DashboardPage: React.FC<{ onNavigate: (path: string) => void }> = ({ onNavigate }) => {
   const { user } = useAuth();
   const { startups, events, mentorshipRequests, certificates } = useEcell();
 
-  const [activeTab, setActiveTab] = useState<'overview' | 'startups' | 'events' | 'mentorship' | 'certificates'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'passport' | 'startups' | 'events' | 'mentorship' | 'certificates'>('overview');
   const [selectedCert, setSelectedCert] = useState<CertificateItem | null>(null);
   const [isStartupModalOpen, setIsStartupModalOpen] = useState(false);
 
@@ -99,6 +100,7 @@ export const DashboardPage: React.FC<{ onNavigate: (path: string) => void }> = (
       <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none border-b border-white/10">
         {[
           { id: 'overview', label: 'Ecosystem Overview', icon: TrendingUp },
+          { id: 'passport', label: 'E-Cell Passport', icon: Shield },
           { id: 'startups', label: `My Startups (${myStartups.length})`, icon: Rocket },
           { id: 'events', label: `Event Passes (${myEvents.length})`, icon: Calendar },
           { id: 'mentorship', label: `Mentorship (${myMentorships.length})`, icon: Compass },
@@ -124,6 +126,15 @@ export const DashboardPage: React.FC<{ onNavigate: (path: string) => void }> = (
       </div>
 
       {/* TAB CONTENT */}
+
+      {/* 0. E-CELL PASSPORT */}
+      {activeTab === 'passport' && (
+        <EcellPassportCard 
+          user={user} 
+          events={myEvents} 
+          certificates={myCertificates} 
+        />
+      )}
 
       {/* 1. OVERVIEW */}
       {activeTab === 'overview' && (

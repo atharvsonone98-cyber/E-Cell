@@ -33,7 +33,7 @@ export const PremiumBackgroundSystem: React.FC<PremiumBackgroundProps> = ({
         />
       </div>
 
-      {/* Primary Cinematic E-CELL UNIVERSE SSGMCE Engine */}
+      {/* Primary Cinematic E-CELL Universe Particle Engine */}
       <div className="absolute inset-0 z-[2]">
         <EcellUniverse currentPath={currentPath} />
       </div>
